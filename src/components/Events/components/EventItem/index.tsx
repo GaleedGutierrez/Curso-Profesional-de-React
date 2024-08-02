@@ -4,9 +4,11 @@ interface Props {
 	info: string | undefined;
 	name: string;
 	image: string;
+	id: string;
+	onEventClick: () => void;
 }
 
-const EventItem: FC<Props> = ({ info, name, image }) => (
+const EventItem: FC<Props> = ({ info, name, image, onEventClick }) => (
 	<div>
 		<img
 			src={image}
@@ -16,6 +18,7 @@ const EventItem: FC<Props> = ({ info, name, image }) => (
 		/>
 		<h4>{name}</h4>
 		<p>{info ? info : "There isn't info"}</p>
+		<button onClick={onEventClick}>Ver más</button>
 	</div>
 );
 
