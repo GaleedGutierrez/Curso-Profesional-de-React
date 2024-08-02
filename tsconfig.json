@@ -1,4 +1,19 @@
 {
+	"compilerOptions": {
+		"baseUrl": "./",
+		"paths": {
+			"@src/*": ["src/*"],
+			"@tests/*": ["tests/*"],
+			"@styles/*": ["src/styles/*"],
+			"@utils/*": ["src/utils/*"],
+			"@templates/*": ["src/templates/*"],
+			"@images/*": ["assets/images/*"],
+			"@components/*": ["src/components/*"],
+			"@hooks/*": ["src/hooks/*"],
+			"@context/*": ["src/context/*"],
+			"@data/*": ["src/data/*"]
+		}
+	},
 	"files": [],
 	"references": [
 		{
