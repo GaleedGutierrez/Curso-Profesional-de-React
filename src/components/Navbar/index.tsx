@@ -1,6 +1,10 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 
-function NavBar(): JSX.Element {
+interface Props {
+	onSearch: (searchedTerm: string) => void;
+}
+
+const NavBar: FC<Props> = ({ onSearch }) => {
 	const [search, setSearch] = useState('');
 
 	function handleInputChange(
@@ -9,17 +13,30 @@ function NavBar(): JSX.Element {
 		setSearch(event.target.value);
 	}
 
+	function handleInputKeyUp(
+		event: React.KeyboardEvent<HTMLInputElement>,
+	): void {
+		const KEY = event.key;
+
+		if (KEY !== 'Enter') {
+			return;
+		}
+
+		onSearch(search);
+	}
+
 	return (
-		<div>
+		<nav>
 			<p>Boletera</p>
 			<input
 				type="text"
 				placeholder="Busca tu evento favorito"
 				onChange={handleInputChange}
 				value={search}
+				onKeyUp={handleInputKeyUp}
 			/>
-		</div>
+		</nav>
 	);
-}
+};
 
 export default NavBar;
