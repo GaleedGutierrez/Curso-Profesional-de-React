@@ -4,7 +4,7 @@ import { FC } from 'react';
 import EventItem from './components/EventItem';
 
 interface Props {
-	test: boolean;
+	searchTerm: string;
 }
 
 // const EVENTS = data._embedded.events;
@@ -12,23 +12,36 @@ const {
 	_embedded: { events },
 } = data;
 
-const Events: FC<Props> = () => {
+const Events: FC<Props> = ({ searchTerm }) => {
 	function handleEventItemClick(id: string): void {
+		// eslint-disable-next-line no-console
 		console.log(`Event with id ${id} clicked`);
 	}
 
-	const EVENTS_COMPONENTE = events.map<JSX.Element>((eventItem) => (
-		<EventItem
-			name={eventItem.name}
-			info={eventItem.info}
-			image={eventItem.images[0].url}
-			key={`event-item-${eventItem.id}`}
-			onEventClick={() => handleEventItemClick(eventItem.id)}
-			id={eventItem.id}
-		/>
-	));
+	function renderEvents(): JSX.Element[] {
+		let filteredEvents = events;
 
-	return <div>{EVENTS_COMPONENTE}</div>;
+		if (searchTerm) {
+			const SEARCH_TERM = searchTerm.toLowerCase();
+
+			filteredEvents = events.filter((eventItem) =>
+				eventItem.name.toLowerCase().includes(SEARCH_TERM),
+			);
+		}
+
+		return filteredEvents.map<JSX.Element>((eventItem) => (
+			<EventItem
+				name={eventItem.name}
+				info={eventItem.info}
+				image={eventItem.images[0].url}
+				key={`event-item-${eventItem.id}`}
+				onEventClick={() => handleEventItemClick(eventItem.id)}
+				id={eventItem.id}
+			/>
+		));
+	}
+
+	return <div>{renderEvents()}</div>;
 };
 
 export default Events;
