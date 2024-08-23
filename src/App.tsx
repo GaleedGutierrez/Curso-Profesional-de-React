@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 import { normalizeText } from './utils/normalizeText';
 
-function App(): JSX.Element {
+function App(): JSX.Element                       {
 	const [searchTerm, setSearchTerm] = useState('');
 
 	function handleNavbarSearch(searchedTerm: string): void {
