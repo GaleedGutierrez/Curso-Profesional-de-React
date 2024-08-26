@@ -33,4 +33,4 @@ jobs:
               env:
                   # To report GitHub Actions status checks
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  CSS_FILE_NAME: GaleedGutierrez/Curso-Profesional-de-React/.stylelintrc.json
+                  CSS_FILE_NAME: ${{ github.workspace }}/.stylelintrc.json
