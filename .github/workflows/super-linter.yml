@@ -34,3 +34,10 @@ jobs:
                   # To report GitHub Actions status checks
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   VALIDATE_CSS: false
+                  VALIDATE_CSS_PRETTIER: false
+                  VALIDATE_HTML: false
+                  VALIDATE_HTML_PRETTIER: false
+                  VALIDATE_TSX: false
+                  VALIDATE_TYPESCRIPT_ES: false
+                  VALIDATE_TYPESCRIPT_PRETTIER: false
+                  VALIDATE_TYPESCRIPT_STANDARD: false

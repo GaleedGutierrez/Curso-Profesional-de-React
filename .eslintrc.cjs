@@ -48,13 +48,13 @@ module.exports = {
 				'plugin:import/typescript',
 			],
 			plugins: ['@typescript-eslint', 'eslint-plugin-tsdoc'],
-			parserOptions: {
-				project: [
-					'./tsconfig.app.json',
-					'./tsconfig.node.json',
-					'./tsconfig.json',
-				],
-			},
+			// parserOptions: {
+			// 	project: [
+			// 		'./tsconfig.app.json',
+			// 		'./tsconfig.node.json',
+			// 		'./tsconfig.json',
+			// 	],
+			// },
 			rules: {
 				'tsdoc/syntax': 'warn',
 				'@typescript-eslint/explicit-module-boundary-types': 'error',
@@ -354,6 +354,11 @@ module.exports = {
 		ecmaFeatures: {
 			jsx: true,
 		},
+		project: [
+			'./tsconfig.json',
+			'./tsconfig.node.json',
+			'./tsconfig.app.json',
+		],
 	},
 	settings: {
 		react: {
