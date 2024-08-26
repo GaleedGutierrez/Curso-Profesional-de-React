@@ -1,6 +1,8 @@
 name: 🗼 Lighthouse
 on: [push]
+
 permissions: {}
+
 jobs:
     lighthouseci:
         runs-on: ubuntu-latest
