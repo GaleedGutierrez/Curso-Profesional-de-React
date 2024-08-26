@@ -33,3 +33,5 @@ jobs:
               env:
                   # To report GitHub Actions status checks
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  LINTER_RULES_PATH: |
+                      GaleedGutierrez/Curso-Profesional-de-React
