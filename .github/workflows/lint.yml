@@ -20,7 +20,9 @@ jobs:
               run: npm run stylelint
 
             - name: 🔍 HTML
-              run: npm run lint-html
+              run: |
+                  npm run lint-htmlhint
+                  npm run lint-html
 
             - name: 📄 Markdown
               run: npm run lint-md

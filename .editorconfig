@@ -19,6 +19,7 @@ quote_type = single
 [*.{yml, yaml}]
 indent_style = space
 indent_size = 2
+max_line_length = off
 
 [*.md]
 trim_trailing_whitespace = false
@@ -28,5 +29,5 @@ indent_size = 2
 [CHANGELOG.md]
 indent_size = false
 
-[*.json]
+[.gitignore, *.json]
 max_line_length = off
