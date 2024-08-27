@@ -346,6 +346,15 @@ module.exports = {
 		// 		'mocha/prefer-arrow-callback': 'error',
 		// 	},
 		// },
+
+		// JSON
+		{
+			files: ['*.json'],
+			extends: [
+				'plugin:jsonc/recommended-with-jsonc',
+				'plugin:jsonc/prettier',
+			],
+		},
 	],
 	parserOptions: {
 		parser: '@typescript-eslint/parser',
