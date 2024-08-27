@@ -34,3 +34,6 @@ max_line_length = off
 
 [.gitignore]
 max_line_length = off
+
+[README.md]
+max_line_length = off

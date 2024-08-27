@@ -17,7 +17,7 @@
 		"lint-md:fix": "markdownlint-cli2 --fix **/*.md !node_modules",
 		"stylelint": "stylelint ./**/*.{css,scss}",
 		"stylelint:fix": "stylelint --fix ./**/*.{css,scss}",
-		"check-for-dupes": "jscpd ./",
+		"check-for-dupes": "npx jscpd ./",
 		"prepare": "husky"
 	},
 	"repository": {
