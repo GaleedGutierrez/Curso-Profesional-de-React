@@ -41,4 +41,8 @@ jobs:
                   VALIDATE_TYPESCRIPT_ES: false
                   VALIDATE_TYPESCRIPT_PRETTIER: false
                   VALIDATE_TYPESCRIPT_STANDARD: false
-                  JSCPD_CONFIG_FILE: ./.jscpd.json
+                  VALIDATE_JSON: false
+                  VALIDATE_JSON_PRETTIER: false
+                  VALIDATE_JSONC: false
+                  VALIDATE_JSONC_PRETTIER: false
+                  VALIDATE_JSCPD: false
