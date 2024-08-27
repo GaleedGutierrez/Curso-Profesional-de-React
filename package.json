@@ -83,6 +83,20 @@
 		"typescript": "^5.2.2",
 		"vite": "^5.3.4"
 	},
+	"prettier": {
+		"endOfLine": "auto",
+		"tabWidth": 4,
+		"useTabs": true,
+		"singleAttributePerLine": true,
+		"overrides": [
+			{
+				"files": "*.html",
+				"options": {
+					"parser": "html"
+				}
+			}
+		]
+	},
 	"lint-staged": {
 		"*.(j|t)s": "npm run lint:fix",
 		"*{css,s(a|c)ss}": "npm run stylelint:fix",
