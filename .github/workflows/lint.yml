@@ -32,6 +32,9 @@ jobs:
       - name: 📐 Prettier
         run: npm run prettier
 
+      - name: 👯‍♂️ JavaScript Copy/Paste Detector
+        run: npm run check-for-dupes
+
   build:
     name: 💐 Super Linter
     runs-on: ubuntu-latest
