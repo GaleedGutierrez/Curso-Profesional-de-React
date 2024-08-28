@@ -1,9 +1,8 @@
 import './App.css';
 
-import Events from '@components/Events';
-import Navbar from '@components/Navbar';
 import { useState } from 'react';
 
+import SignUpForm from './components/SignUpForm';
 import { normalizeText } from './utils/normalizeText';
 
 function App(): JSX.Element {
@@ -15,8 +14,9 @@ function App(): JSX.Element {
 
 	return (
 		<>
-			<Navbar onSearch={handleNavbarSearch} />
-			<Events searchTerm={searchTerm} />
+			{/* <Navbar onSearch={handleNavbarSearch} />
+			<Events searchTerm={searchTerm} /> */}
+			<SignUpForm dummy="" />
 		</>
 	);
 }
