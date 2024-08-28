@@ -50,7 +50,7 @@
 
 /* Font Family */
 
-@font-face {
+/* @font-face {
 	font-family: "Josefin Sans";
 	src: url("@fonts/Josefin_Sans/JosefinSans-Regular.eot");
 	src:
@@ -64,9 +64,9 @@
 	font-style: normal;
 	font-weight: normal;
 	font-display: swap;
-}
+} */
 
-@font-face {
+/* @font-face {
 	font-family: "Josefin Sans";
 	src: url("@fonts/Josefin_Sans/JosefinSans-Bold.eot");
 	src:
@@ -80,4 +80,4 @@
 	font-style: normal;
 	font-weight: bold;
 	font-display: swap;
-}
+} */

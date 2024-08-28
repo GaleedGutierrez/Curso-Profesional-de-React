@@ -8,14 +8,16 @@
 		"dev": "vite --host",
 		"build": "tsc -b && vite build",
 		"preview": "vite preview",
-		"lint": "eslint . --ext js,jsx,mjs,cjs,ts,tsx,mts,cts --max-warnings 0",
-		"lint:fix": "eslint --fix ./**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}",
-		"lint-html": "prettier ./**/*.html --check  --ignore-path .gitignore",
-		"lint-html:fix": "prettier ./**/*.html --write  --ignore-path .gitignore",
+		"lint": "eslint . --ext js,jsx,mjs,cjs,ts,tsx,mts,cts,json --max-warnings 0",
+		"lint:fix": "eslint --fix ./**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,json}",
+		"lint-html": "htmlhint **/*.html",
 		"lint-md": "markdownlint-cli2 **/*.md !node_modules",
 		"lint-md:fix": "markdownlint-cli2 --fix **/*.md !node_modules",
 		"stylelint": "stylelint ./**/*.{css,scss}",
 		"stylelint:fix": "stylelint --fix ./**/*.{css,scss}",
+		"check-for-dupes": "npx jscpd ./",
+		"prettier": "prettier . --check",
+		"prettier:fix": "prettier . --write",
 		"prepare": "husky"
 	},
 	"repository": {
@@ -57,6 +59,7 @@
 		"eslint-plugin-editorconfig": "^4.0.3",
 		"eslint-plugin-import": "^2.29.1",
 		"eslint-plugin-jsdoc": "^48.9.2",
+		"eslint-plugin-jsonc": "^2.16.0",
 		"eslint-plugin-prettier": "^5.2.1",
 		"eslint-plugin-react": "^7.35.0",
 		"eslint-plugin-react-hooks": "^4.6.2",
@@ -65,7 +68,9 @@
 		"eslint-plugin-sort-class-members": "^1.20.0",
 		"eslint-plugin-tsdoc": "^0.3.0",
 		"eslint-plugin-unused-imports": "^3.2.0",
+		"htmlhint": "^1.1.4",
 		"husky": "^9.1.4",
+		"markdownlint": "^0.34.0",
 		"markdownlint-cli2": "^0.13.0",
 		"postcss": "^8.4.40",
 		"postcss-load-config": "^6.0.1",
@@ -77,5 +82,27 @@
 		"ts-node": "^10.9.2",
 		"typescript": "^5.2.2",
 		"vite": "^5.3.4"
+	},
+	"prettier": {
+		"endOfLine": "auto",
+		"singleAttributePerLine": true
+	},
+	"lint-staged": {
+		"*.(j|t)s": "npm run lint:fix",
+		"*{css,s(a|c)ss}": "npm run stylelint:fix",
+		"*.html": "npm run lint-html",
+		"*.md": "npm run lint-md:fix",
+		"*": "npm run prettier:fix"
+	},
+	"jscpd": {
+		"threshold": 1,
+		"reporters": [
+			"consoleFull"
+		],
+		"ignore": [
+			"**/__snapshots__/**",
+			"**/node_modules/**"
+		],
+		"absolute": true
 	}
 }

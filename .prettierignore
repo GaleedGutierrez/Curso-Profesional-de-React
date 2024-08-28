@@ -1,3 +1,4 @@
+.stylelintrc.json
 /dist/*
 /build/*
 /node_modules/*
