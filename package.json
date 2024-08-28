@@ -8,16 +8,16 @@
 		"dev": "vite --host",
 		"build": "tsc -b && vite build",
 		"preview": "vite preview",
-		"lint": "eslint . --ext js,jsx,mjs,cjs,ts,tsx,mts,cts,json --max-warnings 0 && npm run check-for-dupes",
+		"lint": "eslint . --ext js,jsx,mjs,cjs,ts,tsx,mts,cts,json --max-warnings 0",
 		"lint:fix": "eslint --fix ./**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,json}",
-		"lint-html": "prettier ./**/*.html --check  --ignore-path .gitignore",
-		"lint-html:fix": "prettier ./**/*.html --write  --ignore-path .gitignore",
-		"lint-htmlhint": "htmlhint **/*.html",
+		"lint-html": "htmlhint **/*.html",
 		"lint-md": "markdownlint-cli2 **/*.md !node_modules",
 		"lint-md:fix": "markdownlint-cli2 --fix **/*.md !node_modules",
 		"stylelint": "stylelint ./**/*.{css,scss}",
 		"stylelint:fix": "stylelint --fix ./**/*.{css,scss}",
 		"check-for-dupes": "npx jscpd ./",
+		"prettier": "prettier . --check",
+		"prettier:fix": "prettier . --write",
 		"prepare": "husky"
 	},
 	"repository": {
@@ -85,26 +85,14 @@
 	},
 	"prettier": {
 		"endOfLine": "auto",
-		"tabWidth": 4,
-		"useTabs": true,
-		"singleAttributePerLine": true,
-		"overrides": [
-			{
-				"files": "*.html",
-				"options": {
-					"parser": "html"
-				}
-			}
-		]
+		"singleAttributePerLine": true
 	},
 	"lint-staged": {
 		"*.(j|t)s": "npm run lint:fix",
 		"*{css,s(a|c)ss}": "npm run stylelint:fix",
-		"*.html": [
-			"npm run lint-htmlhint",
-			"npm run lint-html:fix"
-		],
-		"*.md": "npm run lint-md:fix"
+		"*.html": "npm run lint-html",
+		"*.md": "npm run lint-md:fix",
+		"*": "npm run prettier:fix"
 	},
 	"jscpd": {
 		"threshold": 1,
