@@ -21,7 +21,7 @@ Documentation:
 Continuous Integration:
   - changed-files:
       - any-glob-to-any-file:
-          - .github/workflows
+          - .github/workflows/*
 
 # Add 'source' label to any change to src files within the source dir EXCEPT for the docs sub-folder
 source:
