@@ -17,7 +17,7 @@ const EventItem: FC<Props> = ({ info, name, image, onEventClick }) => (
 			height={200}
 		/>
 		<h4>{name}</h4>
-		<p>{info ? info : "There isn't info"}</p>
+		<p>{info ?? "There isn't info"}</p>
 		<button onClick={onEventClick}>Ver más</button>
 	</div>
 );
