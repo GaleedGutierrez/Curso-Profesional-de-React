@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   lint:
-    name: 🎀 ESLint - StyleLint - Prettier - HTMLHint - MarkdownLint
+    name: 🎀 ESLint - StyleLint - Prettier - HTMLHint - MarkdownLint - JCPD
     runs-on: ubuntu-latest
     steps:
       - name: 👍 Checkout code
