@@ -1,8 +1,6 @@
 ---
 name: Export label config
-on:
-  # You can run this with every event, but it's better to run it only when you actually need it.
-  workflow_dispatch:
+on: [push, pull_request]
 
 jobs:
   labels:
