@@ -40,7 +40,8 @@
 	"homepage": "https://github.com/GaleedGutierrez/Curso-Profesional-de-React#readme",
 	"dependencies": {
 		"react": "^18.3.1",
-		"react-dom": "^18.3.1"
+		"react-dom": "^18.3.1",
+		"react-hook-form": "^7.53.0"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^19.3.0",
