@@ -1,49 +1,39 @@
-import { FC, FormEvent, useState } from 'react';
+import { FC } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
 interface Props {
 	dummy: string;
 }
 
+interface FormData {
+	name: string;
+	age: string;
+	address: string;
+	zipcode: string;
+	phone: string;
+}
+
 const SignUpForm: FC<Props> = () => {
-	const [name, setName] = useState('');
-	const [age, setAge] = useState('');
-	const [address, setAddress] = useState('');
-	const [zipcode, setZipcode] = useState('');
-	const [phone, setPhone] = useState('');
+	const { register, handleSubmit, reset } = useForm<FormData>();
 
 	function handleClearClick(): void {
-		setName('');
-		setAge('');
-		setAddress('');
-		setZipcode('');
-		setPhone('');
+		reset();
 	}
 
-	function handleSubmitForm(event: FormEvent<HTMLFormElement>): void {
-		event.preventDefault();
+	const handleSubmitForm: SubmitHandler<FormData> = (data) =>
 		// eslint-disable-next-line no-console
-		console.log('Submitting form: ', {
-			name,
-			age,
-			address,
-			zipcode,
-			phone,
-		});
-	}
+		console.log(data);
 
 	return (
-		<form onSubmit={handleSubmitForm}>
+		<form onSubmit={(event) => void handleSubmit(handleSubmitForm)(event)}>
 			<label htmlFor="">
 				<span>Name</span>
 				<input
 					type="text"
-					name=""
 					id=""
 					placeholder="Your name"
 					autoComplete="name"
-					value={name}
-					onChange={(event) => setName(event.target.value)}
-					required
+					{...(register('name'), { required: true })}
 				/>
 			</label>
 			<br />
@@ -51,12 +41,9 @@ const SignUpForm: FC<Props> = () => {
 				<span>Age</span>
 				<input
 					type="number"
-					name=""
 					id=""
 					placeholder="Your age"
-					value={age}
-					onChange={(event) => setAge(event.target.value)}
-					required
+					{...(register('age'), { required: true })}
 				/>
 			</label>
 			<br />
@@ -64,13 +51,10 @@ const SignUpForm: FC<Props> = () => {
 				<span>Address</span>
 				<input
 					type="text"
-					name=""
 					id=""
 					placeholder="Your address"
 					autoComplete="street-address"
-					value={address}
-					onChange={(event) => setAddress(event.target.value)}
-					required
+					{...(register('address'), { required: true })}
 				/>
 			</label>
 			<br />
@@ -78,13 +62,10 @@ const SignUpForm: FC<Props> = () => {
 				<span>Zip code</span>
 				<input
 					type="text"
-					name=""
 					id=""
 					placeholder="Your Zip code"
 					autoComplete="postal-code"
-					value={zipcode}
-					onChange={(event) => setZipcode(event.target.value)}
-					required
+					{...(register('zipcode'), { required: true })}
 				/>
 			</label>
 			<br />
@@ -92,13 +73,10 @@ const SignUpForm: FC<Props> = () => {
 				<span>Phone</span>
 				<input
 					type="number"
-					name=""
 					id=""
 					placeholder="Your phone number"
 					autoComplete="tel"
-					value={phone}
-					onChange={(event) => setPhone(event.target.value)}
-					required
+					{...(register('phone'), { required: true })}
 				/>
 			</label>
 			<div>
