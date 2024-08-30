@@ -65,6 +65,7 @@ jobs:
           # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LINTER_RULES_PATH: /
+          IGNORE_GITIGNORED_FILES: true
           CSS_FILE_NAME: .stylelintrc.json
           VALIDATE_CSS_PRETTIER: false
           VALIDATE_HTML: false
