@@ -63,7 +63,7 @@ test:
   - head-branch: ["^test", "test:"]
   - changed-files:
       - any-glob-to-any-file: ["**/*.test.js", "**/*.test.cjs", "**/*.test.mjs", "**/*.test.jsx", "**/*.test.ts", "**/*.test.cts", "**/*.test.mts", "**/*.test.tsx", "**/*.spec.js", "**/*.spec.cjs", "**/*.spec.mjs", "**/*.spec.jsx", "**/*.spec.ts", "**/*.spec.cts", "**/*.spec.mts", "**/*.spec.tsx", "**/*.cy.js", "**/*.cy.cjs", "**/*.cy.mjs", "**/*.cy.jsx", "**/*.cy.ts", "**/*.cy.cts", "**/*.cy.mts", "**/*.cy.tsx", "**/playwright.config.js", "**/playwright.config.ts", "**/jest.config.js", "**/jest.config.ts", "**/jest.config.mjs", "**/jest.config.cjs", "**/jest.config.json", "**/vitest.config.ts", "**/vitest.config.js", "**/cypress.config.js", "**/cypress.config.mjs", "**/cypress.config.cjs", "**/cypress.config.ts", "**/cypress/**/*", "**/.puppeteerrc", "**/puppeteer.config.js", "**/puppeteer.config.cjs", "**/.puppeteerrc.js", "**/.puppeteerrc.cjs", "**/.puppeteerrc.json", "**/.puppeteerrc.yml", "**/.puppeteerrc.yaml", "**/e2e/**/*", "**/unit/**/*", "**/integration/**/*", "**/tests/**/*", "**/__tests__/**/*", "**/__tests/**/*", "**/_tests_/**/*", "**/_tests/**/*", "**/.husky/**/*", "**/.lintstagedrc", "**/.lintstagedrc.json", "**/.lintstagedrc.yaml", "**/.lintstagedrc.yml", "**/.lintstagedrc.mjs", "**/.lintstagedrc.cjs", "**/.lintstagedrc.js", "**/lint-staged.config.mjs", "**/lint-staged.config.cjs", "**/lint-staged.config.js", "**/.jscpd.json"]
-
+#
 # Add 'release' label to any PR that is opened against the `main` branch
 release:
   - base-branch: "main"
