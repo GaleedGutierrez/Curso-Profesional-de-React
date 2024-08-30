@@ -15,12 +15,6 @@ continuous integration:
   - changed-files:
       - any-glob-to-any-file: [.github/workflows/*, "**/.lighthouserc.js", "**/lighthouserc.js", "**/.lighthouserc.cjs", "**/lighthouserc.cjs", "**/.lighthouserc.json", "**/lighthouserc.json", "**/.lighthouserc.yml", "**/lighthouserc.yml", "**/.lighthouserc.yaml", "**/lighthouserc.yaml"]
 
-# Add 'source' label to any change to src files within the source dir EXCEPT for the docs sub-folder
-source:
-  - changed-files:
-      - any-glob-to-any-file: "src/**/*"
-      - all-globs-to-all-files: "!src/docs/**"
-
 # Add 'feature' label to any PR where the head branch name starts with `feature` or has a `feature` section in the name
 feature:
   - head-branch: ["^feat:", "feat:", "^feature", "feature"]
