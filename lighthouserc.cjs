@@ -6,8 +6,10 @@ module.exports = {
 		assert: {
 			preset: 'lighthouse:no-pwa',
 			assertions: {
-				// Desactivado de forma momentanea hasta que terminemos el proyecto o por lo menos la base del mismo
-				// Hay que eliminar estas reglas una vez esté terminado el proyecto o por lo menos la base del mismo
+				// Desactivado de forma momentanea hasta que terminemos el
+				// proyecto o por lo menos la base del mismo.
+				// Hay que eliminar estas reglas una vez esté terminado el
+				// proyecto o por lo menos la base del mismo.
 				'target-size': 'warn',
 				'meta-description': 'warn',
 				'uses-responsive-images': 'warn',
