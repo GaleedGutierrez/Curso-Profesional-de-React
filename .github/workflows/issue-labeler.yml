@@ -1,4 +1,3 @@
----
 name: "🔖 Issue Labeler"
 on:
   issues:
@@ -12,9 +11,10 @@ jobs:
   triage:
     runs-on: ubuntu-latest
     steps:
-      - uses: github/issue-labeler@v3.3 #May not be the latest version
+      - uses: github/issue-labeler@v3.4 #May not be the latest version
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
           configuration-path: .github/labeler.yml
           not-before: 2020-01-15T02:54:32Z
-          enable-versioned-regex: 0
+          enable-versioned-regex: 1
+          versioned-regex: 'issue_labeler_regex_version=(\d+)'
+          repo-token: ${{ github.token }}
