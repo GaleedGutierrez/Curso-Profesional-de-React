@@ -36,7 +36,7 @@ indent_size = 2
 [CHANGELOG.md]
 indent_size = false
 
-[{.gitignore,*.json,*.md}]
+[{.gitignore,*.json,*.md,commitlint.yml}]
 max_line_length = off
 
 [{Makefile,go.mod,go.sum,*.go,.gitmodules}]
@@ -45,5 +45,3 @@ indent_size = 4
 
 [*.py]
 indent_brace_style = Python
-
-
