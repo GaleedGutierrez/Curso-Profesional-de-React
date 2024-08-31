@@ -43,7 +43,7 @@ module.exports = {
 			files: TS_FILES_REACT,
 			extends: [
 				'plugin:@typescript-eslint/recommended',
-				'plugin:@typescript-eslint/recommended-requiring-type-checking',
+				'plugin:@typescript-eslint/recommended-type-checked',
 				'plugin:@typescript-eslint/stylistic-type-checked',
 				'plugin:import/typescript',
 			],
@@ -59,17 +59,14 @@ module.exports = {
 				'tsdoc/syntax': 'warn',
 				'@typescript-eslint/explicit-module-boundary-types': 'error',
 				'@typescript-eslint/explicit-function-return-type': 'error',
-				'@typescript-eslint/no-explicit-any': 'error',
 				'@typescript-eslint/no-non-null-assertion': 'error',
 				'@typescript-eslint/consistent-type-definitions': 'error',
-				'@typescript-eslint/no-require-imports': ['error'],
-				'@typescript-eslint/no-unnecessary-condition': ['error'],
-				'@typescript-eslint/no-useless-constructor': ['error'],
-				'@typescript-eslint/prefer-readonly': ['error'],
-				'@typescript-eslint/switch-exhaustiveness-check': ['error'],
-				'@typescript-eslint/no-unnecessary-boolean-literal-compare': [
+				'@typescript-eslint/no-unnecessary-condition': 'error',
+				'@typescript-eslint/no-useless-constructor': 'error',
+				'@typescript-eslint/prefer-readonly': 'error',
+				'@typescript-eslint/switch-exhaustiveness-check': 'error',
+				'@typescript-eslint/no-unnecessary-boolean-literal-compare':
 					'error',
-				],
 				'@typescript-eslint/promise-function-async': [
 					'error',
 					{ checkArrowFunctions: false },
@@ -83,6 +80,19 @@ module.exports = {
 					{
 						selector: 'class',
 						format: ['PascalCase'],
+					},
+				],
+				'unused-imports/no-unused-vars': 'off',
+				'@typescript-eslint/no-unused-vars': [
+					'error',
+					{
+						args: 'all',
+						argsIgnorePattern: '^_',
+						caughtErrors: 'all',
+						caughtErrorsIgnorePattern: '^_',
+						destructuredArrayIgnorePattern: '^_',
+						varsIgnorePattern: '^_',
+						ignoreRestSiblings: true,
 					},
 				],
 				'@typescript-eslint/member-ordering': [
@@ -451,6 +461,7 @@ module.exports = {
 					{ blankLine: 'always', prev: 'method', next: '*' },
 				],
 			},
+			{ exceptAfterSingleLine: true },
 		],
 		'@stylistic/padding-line-between-statements': [
 			'error',
@@ -559,7 +570,7 @@ module.exports = {
 		'simple-import-sort/exports': 'error',
 		'simple-import-sort/imports': 'error',
 		'unused-imports/no-unused-imports': 'error',
-		// 'no-unused-vars': 'off', // Opcional. For code < ES6 code.
+		'no-unused-vars': 'off',
 		'unused-imports/no-unused-vars': [
 			'warn',
 			{

@@ -1,63 +1,251 @@
 ---
-# Add 'root' label to any root file changes
-# Quotation marks are required for the leading asterisk
-root:
-  - changed-files:
-      - any-glob-to-any-file: "*"
+release:
+  - base-branch: "main"
 
-# Add 'Documentation' label to any file changes within 'docs' or 'guides' folders
 documentation:
-  - head-branch: ["^documentation", "documentation:", "^docs", "docs:"]
+  - head-branch:
+      ["^documentation", "documentation:", "documentation:*", "^docs", "docs:"]
   - changed-files:
       - any-glob-to-any-file: ["docs/**", "guides/**", "**/*.md"]
 
 continuous integration:
   - changed-files:
-      - any-glob-to-any-file: [.github/workflows/*, "**/.lighthouserc.js", "**/lighthouserc.js", "**/.lighthouserc.cjs", "**/lighthouserc.cjs", "**/.lighthouserc.json", "**/lighthouserc.json", "**/.lighthouserc.yml", "**/lighthouserc.yml", "**/.lighthouserc.yaml", "**/lighthouserc.yaml"]
+      - any-glob-to-any-file:
+          [
+            .github/workflows/*,
+            "**/.lighthouserc.js",
+            "**/lighthouserc.js",
+            "**/.lighthouserc.cjs",
+            "**/lighthouserc.cjs",
+            "**/.lighthouserc.json",
+            "**/lighthouserc.json",
+            "**/.lighthouserc.yml",
+            "**/lighthouserc.yml",
+            "**/.lighthouserc.yaml",
+            "**/lighthouserc.yaml",
+          ]
 
-# Add 'feature' label to any PR where the head branch name starts with `feature` or has a `feature` section in the name
 feature:
   - head-branch: ["^feat:", "feat:", "^feature", "feature"]
 
-# Add 'bug' label to any PR where the head branch name starts with `bug` or has a `bug` section in the name
 bug:
   - head-branch: ["^bug", "bug:"]
 
-# Add 'build' label to any PR where the head branch name starts with `build` or has a `build` section in the name
 build:
   - head-branch: ["^build", "build:"]
   - changed-files:
-      - any-glob-to-any-file: ["**/next.config.js", "**/next.config.mjs", "**/next.config.ts", "**/webpack.common.js", "**/webpack.dev.js", "**/webpack.prod.js", "**/webpack.common.ts", "**/webpack.dev.ts", "**/webpack.prod.ts", "**/webpack.config.js", "**/webpack.config.ts", "**/webpack.config.esm", "**/vite.config.js", "**/vite.config.ts", "**/tsconfig.app.json", "**/tsconfig.node.json", "**/tsconfig.json", "**/.browserslistrc", "**/babel.config.json", "**/babel.config.js", "**/babel.config.cjs", "**/babel.config.mjs", "**/babel.config.cts", "**/.babelrc", "**/.babelrc.json", "**/.babelrc.js", "**/.babelrc.cjs", "**/.babelrc.mjs", "**/.babelrc.cts", "**/.babelrc.cts", "**/babel.config.cts", "**/.babelrc.mjs", "**/babel.config.mjs"]
+      - any-glob-to-any-file:
+          [
+            "**/next.config.js",
+            "**/next.config.mjs",
+            "**/next.config.ts",
+            "**/webpack.common.js",
+            "**/webpack.dev.js",
+            "**/webpack.prod.js",
+            "**/webpack.common.ts",
+            "**/webpack.dev.ts",
+            "**/webpack.prod.ts",
+            "**/webpack.config.js",
+            "**/webpack.config.ts",
+            "**/webpack.config.esm",
+            "**/vite.config.js",
+            "**/vite.config.ts",
+            "**/tsconfig.app.json",
+            "**/tsconfig.node.json",
+            "**/tsconfig.json",
+            "**/.browserslistrc",
+            "**/babel.config.json",
+            "**/babel.config.js",
+            "**/babel.config.cjs",
+            "**/babel.config.mjs",
+            "**/babel.config.cts",
+            "**/.babelrc",
+            "**/.babelrc.json",
+            "**/.babelrc.js",
+            "**/.babelrc.cjs",
+            "**/.babelrc.mjs",
+            "**/.babelrc.cts",
+            "**/.babelrc.cts",
+            "**/babel.config.cts",
+            "**/.babelrc.mjs",
+            "**/babel.config.mjs",
+          ]
 
-# Add 'chore' label to any PR where the head branch name starts with `chore` or has a `chore` section in the name
 chore:
   - head-branch: ["^chore", "chore:"]
 
-# Add 'fix' label to any PR where the head branch name starts with `fix` or has a `fix` section in the name
 fix:
   - head-branch: ["^fix", "fix:"]
 
-# Add 'refactor' label to any PR where the head branch name starts with `refactor` or has a `refactor` section in the name
 refactor:
   - head-branch: ["^refactor", "refactor:"]
 
-# Add 'revert' label to any PR where the head branch name starts with `revert` or has a `revert` section in the name
 revert:
   - head-branch: ["^revert", "revert:"]
 
-# Add 'style' label to any PR where the head branch name starts with `style` or has a `style` section in the name
 style:
   - head-branch: ["^style", "style:", "^styles", "styles:"]
   - changed-files:
-      - any-glob-to-any-file: ["**/*.css", "**/*.scss", "**/*.sass", "**/*.less", "**/*.styl", "**/.postcssrc", "**/.postcssrc.json", "**/.postcssrc.yml", "**/.postcssrc.yaml", "**/.postcssrc.cjs", "**/.postcssrc.mjs", "**/.postcssrc.cts", "**/.postcssrc.mts", "**/.postcssrc.js", "**/.postcssrc.ts", "**/postcss.config.cjs", "**/postcss.config.mjs", "**/postcss.config.cts", "**/postcss.config.mts", "**/postcss.config.js", "**/postcss.config.ts", "**/*.module.css", "**/*.module.scss", "**/*.module.sass", "**/*.module.less", "**/*.module.styl", "**/styles/**/*", "**/css/**/*", "**/sass/**/*", "**/scss/**/*", "**/less/**/*", "**/stylus/**/*", "**/postcss/**/*", "**/.editorconfig", "**/eslint.config.js", "**/eslint.config.mjs", "**/eslint.config.cjs", "**/eslint.config.ts", "**/eslint.config.mts", "**/eslint.config.cts", "**/.eslintrc.js", "**/.eslintrc.cjs", "**/.eslintrc.yaml", "**/.eslintrc.yml", "**/.eslintrc.json", "**/.prettierrc", "**/.prettierrc.json", "**/.prettierrc.js", "**/.prettierrc.mjs", "**/.prettierrc.cjs", "**/.prettierrc.toml", "**/.prettierrc.toml", "**/prettier.config.js", "**/prettier.config.mjs", "**/.stylelintrc", "**/.stylelintrc.js", "**/.stylelintrc.mjs", "**/.stylelintrc.cjs", "**/.stylelintrc.json", "**/.stylelintrc.yaml", "**/.stylelintrc.yml", "**/stylelint.config.js", "**/stylelint.config.mjs", "**/stylelint.config.cjs", "**/.commitlintrc", "**/.commitlintrc.json", "**/.commitlintrc.yaml", "**/.commitlintrc.yml", "**/.commitlintrc.js", "**/.commitlintrc.cjs", "**/.commitlintrc.mjs", "**/.commitlintrc.ts", "**/.commitlintrc.cts", "**/commitlint.config.js", "**/commitlint.config.cjs", "**/commitlint.config.mjs", "**/commitlint.config.ts", "**/commitlint.config.cts", "**/.markdownlint.jsonc", "**/.markdownlint.json", "**/.markdownlint.yaml", "**/.markdownlint.yml", "**/.htmlhintrc"]
+      - any-glob-to-any-file:
+          [
+            "**/*.css",
+            "**/*.scss",
+            "**/*.sass",
+            "**/*.less",
+            "**/*.styl",
+            "**/.postcssrc",
+            "**/.postcssrc.json",
+            "**/.postcssrc.yml",
+            "**/.postcssrc.yaml",
+            "**/.postcssrc.cjs",
+            "**/.postcssrc.mjs",
+            "**/.postcssrc.cts",
+            "**/.postcssrc.mts",
+            "**/.postcssrc.js",
+            "**/.postcssrc.ts",
+            "**/postcss.config.cjs",
+            "**/postcss.config.mjs",
+            "**/postcss.config.cts",
+            "**/postcss.config.mts",
+            "**/postcss.config.js",
+            "**/postcss.config.ts",
+            "**/*.module.css",
+            "**/*.module.scss",
+            "**/*.module.sass",
+            "**/*.module.less",
+            "**/*.module.styl",
+            "**/styles/**/*",
+            "**/css/**/*",
+            "**/sass/**/*",
+            "**/scss/**/*",
+            "**/less/**/*",
+            "**/stylus/**/*",
+            "**/postcss/**/*",
+            "**/.editorconfig",
+            "**/eslint.config.js",
+            "**/eslint.config.mjs",
+            "**/eslint.config.cjs",
+            "**/eslint.config.ts",
+            "**/eslint.config.mts",
+            "**/eslint.config.cts",
+            "**/.eslintrc.js",
+            "**/.eslintrc.cjs",
+            "**/.eslintrc.yaml",
+            "**/.eslintrc.yml",
+            "**/.eslintrc.json",
+            "**/.prettierrc",
+            "**/.prettierrc.json",
+            "**/.prettierrc.js",
+            "**/.prettierrc.mjs",
+            "**/.prettierrc.cjs",
+            "**/.prettierrc.toml",
+            "**/.prettierrc.toml",
+            "**/prettier.config.js",
+            "**/prettier.config.mjs",
+            "**/.stylelintrc",
+            "**/.stylelintrc.js",
+            "**/.stylelintrc.mjs",
+            "**/.stylelintrc.cjs",
+            "**/.stylelintrc.json",
+            "**/.stylelintrc.yaml",
+            "**/.stylelintrc.yml",
+            "**/stylelint.config.js",
+            "**/stylelint.config.mjs",
+            "**/stylelint.config.cjs",
+            "**/.commitlintrc",
+            "**/.commitlintrc.json",
+            "**/.commitlintrc.yaml",
+            "**/.commitlintrc.yml",
+            "**/.commitlintrc.js",
+            "**/.commitlintrc.cjs",
+            "**/.commitlintrc.mjs",
+            "**/.commitlintrc.ts",
+            "**/.commitlintrc.cts",
+            "**/commitlint.config.js",
+            "**/commitlint.config.cjs",
+            "**/commitlint.config.mjs",
+            "**/commitlint.config.ts",
+            "**/commitlint.config.cts",
+            "**/.markdownlint.jsonc",
+            "**/.markdownlint.json",
+            "**/.markdownlint.yaml",
+            "**/.markdownlint.yml",
+            "**/.htmlhintrc",
+          ]
 
-# Add 'test' label to any PR where the head branch name starts with `test` or has a `test` section in the name
-# Add 'test' label to any test file changes
 test:
   - head-branch: ["^test", "test:"]
   - changed-files:
-      - any-glob-to-any-file: ["**/*.test.js", "**/*.test.cjs", "**/*.test.mjs", "**/*.test.jsx", "**/*.test.ts", "**/*.test.cts", "**/*.test.mts", "**/*.test.tsx", "**/*.spec.js", "**/*.spec.cjs", "**/*.spec.mjs", "**/*.spec.jsx", "**/*.spec.ts", "**/*.spec.cts", "**/*.spec.mts", "**/*.spec.tsx", "**/*.cy.js", "**/*.cy.cjs", "**/*.cy.mjs", "**/*.cy.jsx", "**/*.cy.ts", "**/*.cy.cts", "**/*.cy.mts", "**/*.cy.tsx", "**/playwright.config.js", "**/playwright.config.ts", "**/jest.config.js", "**/jest.config.ts", "**/jest.config.mjs", "**/jest.config.cjs", "**/jest.config.json", "**/vitest.config.ts", "**/vitest.config.js", "**/cypress.config.js", "**/cypress.config.mjs", "**/cypress.config.cjs", "**/cypress.config.ts", "**/cypress/**/*", "**/.puppeteerrc", "**/puppeteer.config.js", "**/puppeteer.config.cjs", "**/.puppeteerrc.js", "**/.puppeteerrc.cjs", "**/.puppeteerrc.json", "**/.puppeteerrc.yml", "**/.puppeteerrc.yaml", "**/e2e/**/*", "**/unit/**/*", "**/integration/**/*", "**/tests/**/*", "**/__tests__/**/*", "**/__tests/**/*", "**/_tests_/**/*", "**/_tests/**/*", "**/.husky/**/*", "**/.lintstagedrc", "**/.lintstagedrc.json", "**/.lintstagedrc.yaml", "**/.lintstagedrc.yml", "**/.lintstagedrc.mjs", "**/.lintstagedrc.cjs", "**/.lintstagedrc.js", "**/lint-staged.config.mjs", "**/lint-staged.config.cjs", "**/lint-staged.config.js", "**/.jscpd.json"]
+      - any-glob-to-any-file:
+          [
+            "**/*.test.js",
+            "**/*.test.cjs",
+            "**/*.test.mjs",
+            "**/*.test.jsx",
+            "**/*.test.ts",
+            "**/*.test.cts",
+            "**/*.test.mts",
+            "**/*.test.tsx",
+            "**/*.spec.js",
+            "**/*.spec.cjs",
+            "**/*.spec.mjs",
+            "**/*.spec.jsx",
+            "**/*.spec.ts",
+            "**/*.spec.cts",
+            "**/*.spec.mts",
+            "**/*.spec.tsx",
+            "**/*.cy.js",
+            "**/*.cy.cjs",
+            "**/*.cy.mjs",
+            "**/*.cy.jsx",
+            "**/*.cy.ts",
+            "**/*.cy.cts",
+            "**/*.cy.mts",
+            "**/*.cy.tsx",
+            "**/playwright.config.js",
+            "**/playwright.config.ts",
+            "**/jest.config.js",
+            "**/jest.config.ts",
+            "**/jest.config.mjs",
+            "**/jest.config.cjs",
+            "**/jest.config.json",
+            "**/vitest.config.ts",
+            "**/vitest.config.js",
+            "**/cypress.config.js",
+            "**/cypress.config.mjs",
+            "**/cypress.config.cjs",
+            "**/cypress.config.ts",
+            "**/cypress/**/*",
+            "**/.puppeteerrc",
+            "**/puppeteer.config.js",
+            "**/puppeteer.config.cjs",
+            "**/.puppeteerrc.js",
+            "**/.puppeteerrc.cjs",
+            "**/.puppeteerrc.json",
+            "**/.puppeteerrc.yml",
+            "**/.puppeteerrc.yaml",
+            "**/e2e/**/*",
+            "**/unit/**/*",
+            "**/integration/**/*",
+            "**/tests/**/*",
+            "**/__tests__/**/*",
+            "**/__tests/**/*",
+            "**/_tests_/**/*",
+            "**/_tests/**/*",
+            "**/.husky/**/*",
+            "**/.lintstagedrc",
+            "**/.lintstagedrc.json",
+            "**/.lintstagedrc.yaml",
+            "**/.lintstagedrc.yml",
+            "**/.lintstagedrc.mjs",
+            "**/.lintstagedrc.cjs",
+            "**/.lintstagedrc.js",
+            "**/lint-staged.config.mjs",
+            "**/lint-staged.config.cjs",
+            "**/lint-staged.config.js",
+            "**/.jscpd.json",
+          ]
 
-# Add 'release' label to any PR that is opened against the `main` branch
-release:
-  - base-branch: "main"
+# Issues
+critical:
+  - "(critical|urgent)"

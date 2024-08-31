@@ -29,7 +29,6 @@ quote_type = single
 [*.{yml, yaml}]
 indent_style = space
 indent_size = 2
-max_line_length = off
 
 [*.md]
 indent_size = 2
