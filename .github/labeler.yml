@@ -245,3 +245,6 @@ test:
             "**/lint-staged.config.js",
             "**/.jscpd.json",
           ]
+
+critical:
+  - "(critical|urgent)"
