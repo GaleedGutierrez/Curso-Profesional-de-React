@@ -9,6 +9,7 @@ documentation:
       - any-glob-to-any-file: ["docs/**", "guides/**", "**/*.md"]
 
 continuous integration:
+  - head-branch: ["ci:*", "^ci", "ci:"]
   - changed-files:
       - any-glob-to-any-file:
           [
