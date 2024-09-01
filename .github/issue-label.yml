@@ -1,3 +1,8 @@
-# Add/remove 'critical' label if issue contains the words 'urgent' or 'critical'
+feature:
+  - "feature"
+
 critical:
   - "(critical|urgent)"
+
+bug:
+  - "bug"
