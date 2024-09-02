@@ -33,6 +33,7 @@ module.exports = {
 		'plugin:import/recommended',
 		'plugin:editorconfig/noconflict',
 		'plugin:prettier/recommended',
+		'plugin:jsx-a11y/strict',
 		'plugin:react-hooks/recommended',
 		'plugin:react/recommended',
 		'plugin:react/jsx-runtime',
@@ -244,6 +245,19 @@ module.exports = {
 				},
 			},
 		},
+		{
+			files: ['*.tsx'],
+			rules: {
+				'@typescript-eslint/no-misused-promises': [
+					'error',
+					{
+						checksVoidReturn: {
+							attributes: false,
+						},
+					},
+				],
+			},
+		},
 
 		// JSDoc
 		{
@@ -392,6 +406,7 @@ module.exports = {
 		'check-file',
 		'editorconfig',
 		'@stylistic',
+		'jsx-a11y',
 		'react',
 		'react-refresh',
 	],

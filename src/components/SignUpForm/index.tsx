@@ -25,7 +25,7 @@ const SignUpForm: FC<Props> = () => {
 		console.log(data);
 
 	return (
-		<form onSubmit={(event) => void handleSubmit(handleSubmitForm)(event)}>
+		<form onSubmit={handleSubmit(handleSubmitForm)}>
 			<label htmlFor="">
 				<span>Name</span>
 				<input
