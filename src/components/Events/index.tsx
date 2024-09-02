@@ -29,14 +29,14 @@ const Events: FC<Props> = ({ searchTerm }) => {
 			);
 		}
 
-		return filteredEvents.map<JSX.Element>((eventItem) => (
+		return filteredEvents.map((eventItem) => (
 			<EventItem
-				name={eventItem.name}
-				info={eventItem.info}
-				image={eventItem.images[0].url}
 				key={`event-item-${eventItem.id}`}
-				onEventClick={() => handleEventItemClick(eventItem.id)}
 				id={eventItem.id}
+				image={eventItem.images[0].url}
+				info={eventItem.info}
+				name={eventItem.name}
+				onEventClick={() => handleEventItemClick(eventItem.id)}
 			/>
 		));
 	}

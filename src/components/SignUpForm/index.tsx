@@ -25,14 +25,14 @@ const SignUpForm: FC<Props> = () => {
 		console.log(data);
 
 	return (
-		<form onSubmit={(event) => void handleSubmit(handleSubmitForm)(event)}>
+		<form onSubmit={handleSubmit(handleSubmitForm)}>
 			<label htmlFor="">
 				<span>Name</span>
 				<input
-					type="text"
 					id=""
+					name=""
 					placeholder="Your name"
-					autoComplete="name"
+					type="text"
 					{...(register('name'), { required: true })}
 				/>
 			</label>
@@ -40,9 +40,9 @@ const SignUpForm: FC<Props> = () => {
 			<label htmlFor="">
 				<span>Age</span>
 				<input
-					type="number"
 					id=""
 					placeholder="Your age"
+					type="number"
 					{...(register('age'), { required: true })}
 				/>
 			</label>
@@ -50,10 +50,10 @@ const SignUpForm: FC<Props> = () => {
 			<label htmlFor="">
 				<span>Address</span>
 				<input
-					type="text"
+					autoComplete="street-address"
 					id=""
 					placeholder="Your address"
-					autoComplete="street-address"
+					type="text"
 					{...(register('address'), { required: true })}
 				/>
 			</label>
@@ -61,10 +61,10 @@ const SignUpForm: FC<Props> = () => {
 			<label htmlFor="">
 				<span>Zip code</span>
 				<input
-					type="text"
+					autoComplete="postal-code"
 					id=""
 					placeholder="Your Zip code"
-					autoComplete="postal-code"
+					type="text"
 					{...(register('zipcode'), { required: true })}
 				/>
 			</label>
@@ -72,10 +72,10 @@ const SignUpForm: FC<Props> = () => {
 			<label htmlFor="">
 				<span>Phone</span>
 				<input
-					type="number"
+					autoComplete="tel"
 					id=""
 					placeholder="Your phone number"
-					autoComplete="tel"
+					type="number"
 					{...(register('phone'), { required: true })}
 				/>
 			</label>

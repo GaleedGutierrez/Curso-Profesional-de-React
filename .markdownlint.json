@@ -5,13 +5,6 @@
 	"code-fence-style": {
 		"style": "backtick"
 	},
-	"emphasis-style": {
-		"style": "asterisk"
-	},
-	"fenced-code-language": {
-		"allowed_languages": ["bash", "html", "css", "js", "ts", "json", "markdown", "text"],
-		"language_only": true
-	},
 	"heading-style": {
 		"style": "atx"
 	},
@@ -35,7 +28,7 @@
 	},
 	"proper-names": {
 		"code_blocks": false,
-		"names": ["Cake.Markdownlint", "CommonMark", "JavaScript", "Markdown", "markdown-it", "markdownlint", "Node.js"]
+		"names": ["Cake.Markdownlint", "CommonMark", "JavaScript", "Markdown", "markdown-it", "markdownlint", "Node.js", "TypeScript"]
 	},
 	"reference-links-images": {
 		"shortcut_syntax": true
