@@ -33,10 +33,6 @@ module.exports = {
 		'plugin:import/recommended',
 		'plugin:editorconfig/noconflict',
 		'plugin:prettier/recommended',
-		'plugin:jsx-a11y/strict',
-		'plugin:react-hooks/recommended',
-		'plugin:react/recommended',
-		'plugin:react/jsx-runtime',
 	],
 	overrides: [
 		// TypeScript
@@ -259,6 +255,35 @@ module.exports = {
 			},
 		},
 
+		// React
+		{
+			files: ['*.tsx', '*.jsx'],
+			extends: [
+				'plugin:jsx-a11y/strict',
+				'plugin:react-hooks/recommended',
+				'plugin:react/recommended',
+				'plugin:react/jsx-runtime',
+			],
+			plugins: ['jsx-a11y', 'react', 'react-refresh'],
+			rules: {
+				'@stylistic/jsx-sort-props': [
+					'error',
+					{
+						callbacksLast: true,
+						shorthandFirst: true,
+						reservedFirst: true,
+						multiline: 'last',
+					},
+				],
+				'@stylistic/jsx-pascal-case': 'error',
+				'@stylistic/jsx-self-closing-comp': 'error',
+				'react-refresh/only-export-components': [
+					'warn',
+					{ allowConstantExport: true },
+				],
+			},
+		},
+
 		// JSDoc
 		{
 			files: JS_FILES_REACT,
@@ -406,9 +431,6 @@ module.exports = {
 		'check-file',
 		'editorconfig',
 		'@stylistic',
-		'jsx-a11y',
-		'react',
-		'react-refresh',
 	],
 	rules: {
 		'prettier/prettier': 'error',
@@ -594,12 +616,6 @@ module.exports = {
 				args: 'after-used',
 				argsIgnorePattern: '^_',
 			},
-		],
-
-		// React
-		'react-refresh/only-export-components': [
-			'warn',
-			{ allowConstantExport: true },
 		],
 	},
 };

@@ -11,10 +11,10 @@ interface Props {
 const EventItem: FC<Props> = ({ info, name, image, onEventClick }) => (
 	<div>
 		<img
-			src={image}
 			alt=""
-			width={200}
 			height={200}
+			src={image}
+			width={200}
 		/>
 		<h4>{name}</h4>
 		<p>{info ?? "There isn't info"}</p>

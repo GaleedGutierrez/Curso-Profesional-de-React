@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 
 interface Props {
 	onSearch: (searchedTerm: string) => void;
@@ -6,6 +6,21 @@ interface Props {
 
 const NavBar: FC<Props> = ({ onSearch }) => {
 	const [search, setSearch] = useState('');
+
+	useEffect(() => {
+		// eslint-disable-next-line no-console
+		console.log('search: ');
+	}, [search]);
+
+	useEffect(() => {
+		// eslint-disable-next-line no-console
+		console.log('onSearch: ');
+	}, [onSearch]);
+
+	useEffect(() => {
+		// eslint-disable-next-line no-console
+		console.log('Componente listo.');
+	});
 
 	function handleInputChange(
 		event: React.ChangeEvent<HTMLInputElement>,
@@ -29,10 +44,10 @@ const NavBar: FC<Props> = ({ onSearch }) => {
 		<nav>
 			<p>Boletera</p>
 			<input
-				type="text"
 				placeholder="Busca tu evento favorito"
-				onChange={handleInputChange}
+				type="text"
 				value={search}
+				onChange={handleInputChange}
 				onKeyUp={handleInputKeyUp}
 			/>
 		</nav>
