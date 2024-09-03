@@ -11,6 +11,7 @@ module.exports = {
 				// Hay que eliminar estas reglas una vez esté terminado el
 				// proyecto o por lo menos la base del mismo.
 				'target-size': 'warn',
+				'uses-rel-preconnect': 'warn',
 				'meta-description': 'warn',
 				'uses-responsive-images': 'warn',
 				'prioritize-lcp-image': 'warn',
