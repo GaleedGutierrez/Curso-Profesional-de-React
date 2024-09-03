@@ -1,4 +1,4 @@
-import data from '@data/events.json';
+import useEventData from '@src/hooks/useEventsData';
 import { FC } from 'react';
 
 import EventItem from './components/EventItem';
@@ -7,12 +7,9 @@ interface Props {
 	searchTerm: string;
 }
 
-// const EVENTS = data._embedded.events;
-const {
-	_embedded: { events },
-} = data;
-
 const Events: FC<Props> = ({ searchTerm }) => {
+	const { events } = useEventData();
+
 	function handleEventItemClick(id: string): void {
 		// eslint-disable-next-line no-console
 		console.log(`Event with id ${id} clicked`);
