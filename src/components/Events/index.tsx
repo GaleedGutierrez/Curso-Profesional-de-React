@@ -8,7 +8,7 @@ interface Props {
 }
 
 const Events: FC<Props> = ({ searchTerm }) => {
-	const { events } = useEventData();
+	const { events, isLoading, error } = useEventData();
 
 	function handleEventItemClick(id: string): void {
 		// eslint-disable-next-line no-console
@@ -36,6 +36,14 @@ const Events: FC<Props> = ({ searchTerm }) => {
 				onEventClick={() => handleEventItemClick(eventItem.id)}
 			/>
 		));
+	}
+
+	if (error) {
+		return <div>There has been an error.</div>;
+	}
+
+	if (isLoading) {
+		return <div>Loading results...</div>;
 	}
 
 	return <div>{renderEvents()}</div>;
