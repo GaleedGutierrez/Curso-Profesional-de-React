@@ -1,6 +1,6 @@
 import './App.css';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import Events from './components/Events';
 import Navbar from './components/Navbar';
@@ -10,6 +10,7 @@ import { normalizeText } from './utils/normalizeText';
 
 function App(): JSX.Element {
 	const [searchTerm, setSearchTerm] = useState('');
+	const CONTAINER_REF = useRef<HTMLElement>(null);
 
 	function handleNavbarSearch(searchedTerm: string): void {
 		setSearchTerm(normalizeText(searchedTerm));
@@ -17,7 +18,10 @@ function App(): JSX.Element {
 
 	return (
 		<>
-			<Navbar onSearch={handleNavbarSearch} />
+			<Navbar
+				ref={CONTAINER_REF}
+				onSearch={handleNavbarSearch}
+			/>
 			<Events searchTerm={searchTerm} />
 			{/* <SignUpForm dummy="" /> */}
 		</>
