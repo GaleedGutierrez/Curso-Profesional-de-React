@@ -4,7 +4,8 @@ interface Props {
 	info: string | undefined;
 	name: string;
 	image: string;
-	// id: string;
+	// eslint-disable-next-line react/no-unused-prop-types
+	id: string;
 	onEventClick: () => void;
 }
 
