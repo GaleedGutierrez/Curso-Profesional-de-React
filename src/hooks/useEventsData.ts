@@ -5,13 +5,13 @@ type Events = typeof eventsJSON;
 
 type Event = Events['_embedded']['events'][number];
 
-interface useEventDataReturn {
+interface UseEventDataReturn {
 	events: Event[];
 	isLoading: boolean;
 	error: Error | undefined;
 }
 
-function useEventData(): useEventDataReturn {
+function useEventData(): UseEventDataReturn {
 	const [data, setData] = useState<Events>();
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState<Error>();

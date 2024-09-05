@@ -78,6 +78,20 @@ module.exports = {
 						selector: 'class',
 						format: ['PascalCase'],
 					},
+					{
+						selector: 'variable',
+						types: ['boolean'],
+						format: ['PascalCase'],
+						prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
+					},
+					{
+						selector: 'function',
+						format: ['camelCase', 'PascalCase'],
+					},
+					{
+						selector: 'typeLike',
+						format: ['PascalCase'],
+					},
 				],
 				'unused-imports/no-unused-vars': 'off',
 				'@typescript-eslint/no-unused-vars': [
@@ -290,7 +304,7 @@ module.exports = {
 				'react/boolean-prop-naming': [
 					'error',
 					{
-						rule: '^(is|has|can)[A-Z]([A-Za-z0-9]*)$',
+						rule: '^(is|has|can|should|did|will)[A-Z]([A-Za-z0-9]*)$',
 						message:
 							"'{{ propName }}' must start with 'is', 'has', or 'can'. For example: `isEnabled`.",
 						validateNested: true,
