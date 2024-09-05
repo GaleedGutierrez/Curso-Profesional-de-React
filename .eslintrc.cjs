@@ -1,15 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // eslint-disable-next-line unused-imports/no-unused-vars, no-unused-vars
-const TESTING_FILES = [
-	'*.test.ts',
-	'*.spec.ts',
-	'*.spec.tsx',
-	'*.e2e.ts',
-	'*.test.js',
-	'*.spec.js',
-	'*.e2e.js',
-];
-
+const TESTING_FILES = ['*.test.ts', '*.spec.ts', '*.spec.tsx', '*.e2e.ts', '*.test.js', '*.spec.js', '*.e2e.js'];
 const TS_FILES = ['*.ts', '*.mts', '*.cts'];
 const TS_FILES_REACT = [...TS_FILES, '*.tsx'];
 const JS_FILES = ['*.js', '*.mjs', '*.cjs'];
@@ -28,22 +19,12 @@ module.exports = {
 		// 'cypress/globals': true,
 		// mocha: true,
 	},
-	extends: [
-		'eslint:recommended',
-		'plugin:import/recommended',
-		'plugin:editorconfig/noconflict',
-		'plugin:prettier/recommended',
-	],
+	extends: ['eslint:recommended', 'plugin:import/recommended', 'plugin:editorconfig/noconflict', 'plugin:prettier/recommended'],
 	overrides: [
 		// TypeScript
 		{
 			files: TS_FILES_REACT,
-			extends: [
-				'plugin:@typescript-eslint/recommended',
-				'plugin:@typescript-eslint/recommended-type-checked',
-				'plugin:@typescript-eslint/stylistic-type-checked',
-				'plugin:import/typescript',
-			],
+			extends: ['plugin:@typescript-eslint/recommended', 'plugin:@typescript-eslint/recommended-type-checked', 'plugin:@typescript-eslint/stylistic-type-checked', 'plugin:import/typescript'],
 			plugins: ['@typescript-eslint', 'eslint-plugin-tsdoc'],
 			// parserOptions: {
 			// 	project: [
@@ -62,16 +43,9 @@ module.exports = {
 				'@typescript-eslint/no-useless-constructor': 'error',
 				'@typescript-eslint/prefer-readonly': 'error',
 				'@typescript-eslint/switch-exhaustiveness-check': 'error',
-				'@typescript-eslint/no-unnecessary-boolean-literal-compare':
-					'error',
-				'@typescript-eslint/promise-function-async': [
-					'error',
-					{ checkArrowFunctions: false },
-				],
-				'@typescript-eslint/no-confusing-void-expression': [
-					'error',
-					{ ignoreArrowShorthand: true },
-				],
+				'@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
+				'@typescript-eslint/promise-function-async': ['error', { checkArrowFunctions: false }],
+				'@typescript-eslint/no-confusing-void-expression': ['error', { ignoreArrowShorthand: true }],
 				'@typescript-eslint/naming-convention': [
 					'error',
 					{
@@ -272,12 +246,7 @@ module.exports = {
 		// React
 		{
 			files: ['*.tsx', '*.jsx'],
-			extends: [
-				'plugin:jsx-a11y/strict',
-				'plugin:react-hooks/recommended',
-				'plugin:react/recommended',
-				'plugin:react/jsx-runtime',
-			],
+			extends: ['plugin:jsx-a11y/strict', 'plugin:react-hooks/recommended', 'plugin:react/recommended', 'plugin:react/jsx-runtime'],
 			plugins: ['jsx-a11y', 'react', 'react-refresh'],
 			rules: {
 				'@stylistic/jsx-sort-props': [
@@ -291,10 +260,7 @@ module.exports = {
 				],
 				'@stylistic/jsx-pascal-case': 'error',
 				'@stylistic/jsx-self-closing-comp': 'error',
-				'react-refresh/only-export-components': [
-					'warn',
-					{ allowConstantExport: true },
-				],
+				'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
 				'react/no-unused-prop-types': 'error',
 				'react/style-prop-object': 'error',
 				// 'react/button-has-type': 'error',
@@ -305,8 +271,7 @@ module.exports = {
 					'error',
 					{
 						rule: '^(is|has|can|should|did|will)[A-Z]([A-Za-z0-9]*)$',
-						message:
-							"'{{ propName }}' must start with 'is', 'has', or 'can'. For example: `isEnabled`.",
+						message: "'{{ propName }}' must start with 'is', 'has', or 'can'. For example: `isEnabled`.",
 						validateNested: true,
 					},
 				],
@@ -322,15 +287,7 @@ module.exports = {
 				'sort-class-members/sort-class-members': [
 					'error',
 					{
-						order: [
-							'[properties]',
-							'[conventional-private-properties]',
-							'[static-properties]',
-							'constructor',
-							'[methods]',
-							'[conventional-private-methods]',
-							'[static-methods]',
-						],
+						order: ['[properties]', '[conventional-private-properties]', '[static-properties]', 'constructor', '[methods]', '[conventional-private-methods]', '[static-methods]'],
 						accessorPairPositioning: 'getThenSet',
 					},
 				],
@@ -428,10 +385,7 @@ module.exports = {
 		// JSON
 		{
 			files: ['*.json'],
-			extends: [
-				'plugin:jsonc/recommended-with-jsonc',
-				'plugin:jsonc/prettier',
-			],
+			extends: ['plugin:jsonc/recommended-with-jsonc', 'plugin:jsonc/prettier'],
 		},
 	],
 	parserOptions: {
@@ -441,11 +395,7 @@ module.exports = {
 		ecmaFeatures: {
 			jsx: true,
 		},
-		project: [
-			'./tsconfig.json',
-			'./tsconfig.node.json',
-			'./tsconfig.app.json',
-		],
+		project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
 	},
 	settings: {
 		react: {
@@ -453,14 +403,7 @@ module.exports = {
 			version: 'detect',
 		},
 	},
-	plugins: [
-		'import',
-		'simple-import-sort',
-		'unused-imports',
-		'check-file',
-		'editorconfig',
-		'@stylistic',
-	],
+	plugins: ['import', 'simple-import-sort', 'unused-imports', 'check-file', 'editorconfig', '@stylistic'],
 	rules: {
 		'prettier/prettier': 'error',
 
@@ -533,51 +476,13 @@ module.exports = {
 			'error',
 			{
 				blankLine: 'always',
-				prev: [
-					'directive',
-					'import',
-					'cjs-import',
-					'export',
-					'cjs-export',
-					'const',
-					'let',
-					'var',
-					'class',
-					'block',
-					'block-like',
-					'multiline-block-like',
-					'function',
-					'iife',
-					'expression',
-					'case',
-					'default',
-					'interface',
-					'type',
-				],
+				prev: ['directive', 'import', 'cjs-import', 'export', 'cjs-export', 'const', 'let', 'var', 'class', 'block', 'block-like', 'multiline-block-like', 'function', 'iife', 'expression', 'case', 'default', 'interface', 'type'],
 				next: '*',
 			},
 			{
 				blankLine: 'always',
 				prev: '*',
-				next: [
-					'import',
-					'cjs-import',
-					'export',
-					'cjs-export',
-					'const',
-					'let',
-					'var',
-					'class',
-					'block',
-					'block-like',
-					'multiline-block-like',
-					'function',
-					'iife',
-					'expression',
-					'return',
-					'interface',
-					'type',
-				],
+				next: ['import', 'cjs-import', 'export', 'cjs-export', 'const', 'let', 'var', 'class', 'block', 'block-like', 'multiline-block-like', 'function', 'iife', 'expression', 'return', 'interface', 'type'],
 			},
 			{
 				blankLine: 'always',
