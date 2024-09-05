@@ -31,7 +31,7 @@ function useEventData(): useEventDataReturn {
 		}, 2000);
 	}, []);
 	// eslint-disable-next-line no-console
-	console.log(data);
+	// console.log(data);
 
 	return {
 		// eslint-disable-next-line no-underscore-dangle

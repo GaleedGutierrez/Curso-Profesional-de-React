@@ -1,26 +1,11 @@
-import { FC, useEffect, useState } from 'react';
+import { forwardRef, useState } from 'react';
 
 interface Props {
 	onSearch: (searchedTerm: string) => void;
 }
 
-const NavBar: FC<Props> = ({ onSearch }) => {
+const NavBar = forwardRef<HTMLElement, Props>(({ onSearch }, ref) => {
 	const [search, setSearch] = useState('');
-
-	useEffect(() => {
-		// eslint-disable-next-line no-console
-		console.log('search: ');
-	}, [search]);
-
-	useEffect(() => {
-		// eslint-disable-next-line no-console
-		console.log('onSearch: ');
-	}, [onSearch]);
-
-	useEffect(() => {
-		// eslint-disable-next-line no-console
-		console.log('Componente listo.');
-	});
 
 	function handleInputChange(
 		event: React.ChangeEvent<HTMLInputElement>,
@@ -40,8 +25,13 @@ const NavBar: FC<Props> = ({ onSearch }) => {
 		onSearch(search);
 	}
 
+	if (ref && typeof ref !== 'function') {
+		// eslint-disable-next-line no-console
+		console.log(ref.current);
+	}
+
 	return (
-		<nav>
+		<nav ref={ref}>
 			<p>Boletera</p>
 			<input
 				placeholder="Busca tu evento favorito"
@@ -50,8 +40,15 @@ const NavBar: FC<Props> = ({ onSearch }) => {
 				onChange={handleInputChange}
 				onKeyUp={handleInputKeyUp}
 			/>
+			<input
+				checked
+				readOnly
+				type="checkbox"
+			/>
 		</nav>
 	);
-};
+});
+
+NavBar.displayName = 'NavBar';
 
 export default NavBar;

@@ -281,6 +281,21 @@ module.exports = {
 					'warn',
 					{ allowConstantExport: true },
 				],
+				'react/no-unused-prop-types': 'error',
+				'react/style-prop-object': 'error',
+				// 'react/button-has-type': 'error',
+				'react/checked-requires-onchange-or-readonly': 'error',
+				'react/default-props-match-prop-types': 'error',
+				'react/destructuring-assignment': ['error', 'always'],
+				'react/boolean-prop-naming': [
+					'error',
+					{
+						rule: '^(is|has|can)[A-Z]([A-Za-z0-9]*)$',
+						message:
+							"'{{ propName }}' must start with 'is', 'has', or 'can'. For example: `isEnabled`.",
+						validateNested: true,
+					},
+				],
 			},
 		},
 
