@@ -1,11 +1,18 @@
-import { forwardRef, useState } from 'react';
+import { forwardRef, useImperativeHandle, useState } from 'react';
 
 interface Props {
 	onSearch: (searchedTerm: string) => void;
 }
 
-const NavBar = forwardRef<HTMLElement, Props>(({ onSearch }, ref) => {
+interface NavBarRef {
+	search: string;
+	setSearch: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const NavBar = forwardRef<NavBarRef, Props>(({ onSearch }, ref) => {
 	const [search, setSearch] = useState('');
+
+	useImperativeHandle(ref, () => ({ search, setSearch }));
 
 	function handleInputChange(
 		event: React.ChangeEvent<HTMLInputElement>,
