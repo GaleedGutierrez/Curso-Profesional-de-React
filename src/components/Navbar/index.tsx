@@ -41,8 +41,8 @@ const NavBar = forwardRef<HTMLElement, Props>(
 					placeholder="Busca tu evento favorito"
 					type="text"
 					value={search}
-					onKeyUp={handleInputKeyUp}
 					onChange={handleInputChange}
+					onKeyUp={handleInputKeyUp}
 				/>
 				<input
 					checked
