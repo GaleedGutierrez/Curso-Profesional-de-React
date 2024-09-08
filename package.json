@@ -97,7 +97,7 @@
 		"*": "npm run prettier:fix"
 	},
 	"jscpd": {
-		"threshold": 1,
+		"threshold": 0.5,
 		"reporters": [
 			"consoleFull"
 		],
