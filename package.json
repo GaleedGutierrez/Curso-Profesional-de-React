@@ -103,7 +103,10 @@
 		],
 		"ignore": [
 			"**/__snapshots__/**",
-			"**/node_modules/**"
+			"**/node_modules/**",
+			"**/dist/**",
+			"**/build/**",
+			"**/fonts/**"
 		],
 		"absolute": true
 	}
