@@ -249,32 +249,6 @@ module.exports = {
 			extends: ['plugin:jsx-a11y/strict', 'plugin:react-hooks/recommended', 'plugin:react/recommended', 'plugin:react/jsx-runtime'],
 			plugins: ['jsx-a11y', 'react', 'react-refresh'],
 			rules: {
-				'@stylistic/jsx-sort-props': [
-					'error',
-					{
-						callbacksLast: true,
-						shorthandFirst: true,
-						reservedFirst: true,
-						multiline: 'last',
-					},
-				],
-				'@stylistic/jsx-pascal-case': 'error',
-				'@stylistic/jsx-self-closing-comp': 'error',
-				'react/sort-default-props': 'error',
-				'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
-				'react/no-unused-prop-types': 'error',
-				'react/style-prop-object': 'error',
-				// 'react/button-has-type': 'error',
-				'react/checked-requires-onchange-or-readonly': 'error',
-				'react/default-props-match-prop-types': 'error',
-				'react/no-array-index-key': 'error',
-				'react/no-danger': 'error',
-				'react/no-namespace': 'error',
-				'react/no-object-type-as-default-prop': 'error',
-				'react/sort-comp': 'error',
-				'react/hook-use-state': ['error', { allowDestructuredState: true }],
-				'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
-				'react/destructuring-assignment': ['error', 'always'],
 				'react/boolean-prop-naming': [
 					'error',
 					{
@@ -283,6 +257,149 @@ module.exports = {
 						validateNested: true,
 					},
 				],
+				'react/button-has-type': [
+					'error',
+					{
+						button: true,
+						submit: true,
+						reset: false,
+					},
+				],
+				'react/default-props-match-prop-types': ['error', { allowRequiredDefaults: false }],
+				'react/destructuring-assignment': ['error', 'always'],
+				'react/forbid-foreign-prop-types': ['warn', { allowInPropTypes: true }],
+				'react/forbid-prop-types': [
+					'error',
+					{
+						forbid: ['any', 'array', 'object'],
+						checkContextTypes: true,
+						checkChildContextTypes: true,
+					},
+				],
+				'react/function-component-definition': ['error', { namedComponents: ['function-declaration', 'arrow-function'], unnamedComponents: 'arrow-function' }],
+				'react/hook-use-state': ['error', { allowDestructuredState: true }],
+				'react/iframe-missing-sandbox': 'error',
+				'react/jsx-boolean-value': ['error', 'never'],
+				'@stylistic/jsx-closing-bracket-location': ['error', 'line-aligned'],
+				'@stylistic/jsx-closing-tag-location': 'error',
+				'@stylistic/jsx-curly-brace-presence': [
+					'error',
+					{
+						props: 'never',
+						children: 'never',
+						propElementValues: 'always',
+					},
+				],
+				'@stylistic/jsx-curly-newline': [
+					'error',
+					{
+						multiline: 'consistent',
+						singleline: 'consistent',
+					},
+				],
+				'@stylistic/jsx-curly-spacing': ['error', 'never', { allowMultiline: true }],
+				'@stylistic/jsx-equals-spacing': ['error', 'never'],
+				'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
+				'@stylistic/jsx-first-prop-new-line': ['error', 'multiline-multiprop'],
+				'react/jsx-fragments': 'error',
+				'react/jsx-handler-names': [
+					'error',
+					{
+						checkLocalVariables: true,
+					},
+				],
+				'@stylistic/jsx-indent-props': ['error', 'tab'],
+				'@stylistic/jsx-max-props-per-line': ['error', { maximum: 1, when: 'multiline' }],
+				'react/jsx-no-bind': [
+					'error',
+					{
+						ignoreRefs: true,
+						allowArrowFunctions: true,
+						allowFunctions: true,
+						allowBind: false,
+						ignoreDOMComponents: true,
+					},
+				], // Puesto a prueba
+				'react/jsx-no-constructed-context-values': 'error',
+				'react/jsx-no-script-url': 'error',
+				'react/jsx-no-useless-fragment': 'error',
+				'@stylistic/jsx-one-expression-per-line': ['error', { allow: 'single-child' }],
+				'@stylistic/jsx-pascal-case': [
+					'error',
+					{
+						allowAllCaps: true,
+					},
+				],
+				'@stylistic/jsx-props-no-multi-spaces': 'error',
+				'@stylistic/jsx-tag-spacing': [
+					'error',
+					{
+						beforeSelfClosing: 'always',
+					},
+				],
+				'@stylistic/jsx-wrap-multilines': [
+					'error',
+					{
+						declaration: 'parens-new-line',
+						assignment: 'parens-new-line',
+						return: 'parens-new-line',
+						arrow: 'parens-new-line',
+						condition: 'parens-new-line',
+						logical: 'parens-new-line',
+						prop: 'parens-new-line',
+					},
+				],
+				'react/no-access-state-in-setstate': 'error',
+				'react/no-array-index-key': 'error',
+				'react/no-arrow-function-lifecycle': 'error',
+				'react/no-danger': 'warn',
+				'react/no-did-update-set-state': 'error',
+				'react/no-invalid-html-attribute': 'error',
+				'react/no-namespace': 'error',
+				'react/no-redundant-should-component-update': 'error',
+				'react/no-this-in-sfc': 'error',
+				'react/no-typos': 'error',
+				'react/no-unstable-nested-components': 'error',
+				'react/no-unused-class-component-methods': 'error',
+				'react/no-unused-prop-types': 'error',
+				'react/no-unused-state': 'error',
+				'react/no-will-update-set-state': 'error',
+				'react/prefer-es6-class': ['error', 'always'],
+				'react/prefer-exact-props': 'error',
+				'react/prefer-stateless-function': ['error', { ignorePureComponents: true }],
+				'react/require-default-props': [
+					'error',
+					{
+						forbidDefaultForRequired: true,
+					},
+				],
+				'@stylistic/jsx-self-closing-comp': 'error',
+				'react/sort-comp': [
+					'error',
+					{
+						order: ['static-variables', 'static-methods', 'instance-variables', 'lifecycle', '/^handle.+$/', '/^on.+$/', 'getters', 'setters', '/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/', 'instance-methods', 'everything-else', 'rendering'],
+						groups: {
+							lifecycle: ['displayName', 'propTypes', 'contextTypes', 'childContextTypes', 'mixins', 'statics', 'defaultProps', 'constructor', 'getDefaultProps', 'getInitialState', 'state', 'getChildContext', 'getDerivedStateFromProps', 'componentWillMount', 'UNSAFE_componentWillMount', 'componentDidMount', 'componentWillReceiveProps', 'UNSAFE_componentWillReceiveProps', 'shouldComponentUpdate', 'componentWillUpdate', 'UNSAFE_componentWillUpdate', 'getSnapshotBeforeUpdate', 'componentDidUpdate', 'componentDidCatch', 'componentWillUnmount'],
+							rendering: ['/^render.+$/', 'render'],
+						},
+					},
+				],
+				'react/state-in-constructor': ['error', 'always'],
+				'react/static-property-placement': ['error', 'property assignment'],
+				'react/style-prop-object': 'error',
+				'react/void-dom-elements-no-children': 'error',
+				'@stylistic/jsx-sort-props': [
+					'warn',
+					{
+						callbacksLast: true,
+						shorthandFirst: true,
+						reservedFirst: true,
+						multiline: 'last',
+					},
+				],
+
+				'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+				'react/jsx-props-no-spread-multi': 'error',
 			},
 		},
 
@@ -462,6 +579,7 @@ module.exports = {
 		'no-unneeded-ternary': 'error',
 		'prefer-arrow-callback': 'error', // Opcional
 		'no-nested-ternary': 'error',
+		'max-depth': ['error', 5],
 
 		// Styles
 		'no-implicit-coercion': 'error',

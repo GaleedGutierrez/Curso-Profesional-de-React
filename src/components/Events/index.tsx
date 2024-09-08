@@ -29,11 +29,11 @@ const Events: FC<Props> = ({ searchTerm }) => {
 		return filteredEvents.map((eventItem) => (
 			<EventItem
 				key={`event-item-${eventItem.id}`}
+				handleEventClick={() => handleEventItemClick(eventItem.id)}
 				id={eventItem.id}
 				image={eventItem.images[0].url}
 				info={eventItem.info}
 				name={eventItem.name}
-				onEventClick={() => handleEventItemClick(eventItem.id)}
 			/>
 		));
 	}
@@ -43,7 +43,12 @@ const Events: FC<Props> = ({ searchTerm }) => {
 	}
 
 	if (isLoading) {
-		return <div>Loading results...</div>;
+		return (
+			<div>
+				Loading results...
+				<div>{renderEvents()}</div>
+			</div>
+		);
 	}
 
 	return <div>{renderEvents()}</div>;
