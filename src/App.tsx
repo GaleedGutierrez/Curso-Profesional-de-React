@@ -22,6 +22,7 @@ function App(): JSX.Element {
 		<>
 			<Navbar
 				ref={CONTAINER_REF}
+				isEnabled
 				onSearch={handleNavbarSearch}
 			/>
 			<Events searchTerm={searchTerm} />

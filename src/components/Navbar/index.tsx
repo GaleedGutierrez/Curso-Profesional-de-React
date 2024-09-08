@@ -1,60 +1,73 @@
-import { forwardRef, useImperativeHandle, useState } from 'react';
+import { forwardRef, useState } from 'react';
 
 interface Props {
 	onSearch: (searchedTerm: string) => void;
+	isEnabled: boolean;
 }
 
-interface NavBarRef {
-	search: string;
-	setSearch: React.Dispatch<React.SetStateAction<string>>;
-}
+const NavBar = forwardRef<HTMLElement, Props>(
+	({ onSearch, isEnabled }, ref) => {
+		const [search, setSearch] = useState('');
 
-const NavBar = forwardRef<NavBarRef, Props>(({ onSearch }, ref) => {
-	const [search, setSearch] = useState('');
+		// console.log({ isEnabled });
 
-	useImperativeHandle(ref, () => ({ search, setSearch }));
-
-	function handleInputChange(
-		event: React.ChangeEvent<HTMLInputElement>,
-	): void {
-		setSearch(event.target.value);
-	}
-
-	function handleInputKeyUp(
-		event: React.KeyboardEvent<HTMLInputElement>,
-	): void {
-		const KEY = event.key;
-
-		if (KEY !== 'Enter') {
-			return;
+		function handleInputChange(
+			event: React.ChangeEvent<HTMLInputElement>,
+		): void {
+			setSearch(event.target.value);
 		}
 
-		onSearch(search);
-	}
+		function handleInputKeyUp(
+			event: React.KeyboardEvent<HTMLInputElement>,
+		): void {
+			const KEY = event.key;
 
-	if (ref && typeof ref !== 'function') {
-		// eslint-disable-next-line no-console
-		console.log(ref.current);
-	}
+			if (KEY !== 'Enter') {
+				return;
+			}
 
-	return (
-		<nav ref={ref}>
-			<p>Boletera</p>
-			<input
-				placeholder="Busca tu evento favorito"
-				type="text"
-				value={search}
-				onChange={handleInputChange}
-				onKeyUp={handleInputKeyUp}
-			/>
-			<input
-				checked
-				readOnly
-				type="checkbox"
-			/>
-		</nav>
-	);
-});
+			onSearch(search);
+		}
+
+		if (ref && typeof ref !== 'function') {
+			// eslint-disable-next-line no-console
+			console.log(ref.current);
+		}
+
+		return (
+			<nav
+				ref={ref}
+				style={{
+					marginBlockEnd: '1rem',
+					width: '100%',
+					display: 'flex',
+				}}
+			>
+				{isEnabled ? (
+					<p style={{ flex: 1, display: 'flex' }}>Boletera</p>
+				) : (
+					''
+				)}
+				<input
+					placeholder="Busca tu evento favorito"
+					type="text"
+					value={search}
+					style={{
+						flex: 1,
+						display: 'flex',
+						justifyContent: 'center',
+						padding: '4px 8px',
+						borderRadius: '4px',
+						border: 'none',
+						width: '200px',
+					}}
+					onChange={handleInputChange}
+					onKeyUp={handleInputKeyUp}
+				/>
+			</nav>
+		);
+	},
+);
 
 NavBar.displayName = 'NavBar';
 

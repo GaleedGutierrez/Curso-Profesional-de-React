@@ -6,10 +6,10 @@ interface Props {
 	image: string;
 	// eslint-disable-next-line react/no-unused-prop-types
 	id: string;
-	onEventClick: () => void;
+	handleEventClick: () => void;
 }
 
-const EventItem: FC<Props> = ({ info, name, image, onEventClick }) => (
+const EventItem: FC<Props> = ({ info, name, image, handleEventClick }) => (
 	<div>
 		<img
 			alt=""
@@ -21,7 +21,7 @@ const EventItem: FC<Props> = ({ info, name, image, onEventClick }) => (
 		<p>{info ?? "There isn't info"}</p>
 		<button
 			type="button"
-			onClick={onEventClick}
+			onClick={handleEventClick}
 		>
 			Ver más
 		</button>
