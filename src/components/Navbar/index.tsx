@@ -35,19 +35,34 @@ const NavBar = forwardRef<HTMLElement, Props>(
 		}
 
 		return (
-			<nav ref={ref}>
-				{isEnabled ? <p>Boletera</p> : ''}
+			<nav
+				ref={ref}
+				style={{
+					marginBlockEnd: '1rem',
+					width: '100%',
+					display: 'flex',
+				}}
+			>
+				{isEnabled ? (
+					<p style={{ flex: 1, display: 'flex' }}>Boletera</p>
+				) : (
+					''
+				)}
 				<input
 					placeholder="Busca tu evento favorito"
 					type="text"
 					value={search}
+					style={{
+						flex: 1,
+						display: 'flex',
+						justifyContent: 'center',
+						padding: '4px 8px',
+						borderRadius: '4px',
+						border: 'none',
+						width: '200px',
+					}}
 					onChange={handleInputChange}
 					onKeyUp={handleInputKeyUp}
-				/>
-				<input
-					checked
-					readOnly
-					type="checkbox"
 				/>
 			</nav>
 		);
