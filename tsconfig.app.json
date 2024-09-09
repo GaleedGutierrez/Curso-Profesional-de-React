@@ -37,5 +37,5 @@
 			"@data/*": ["src/data/*"]
 		}
 	},
-	"include": ["src", "./**/*.ts", "postcss.config.cjs"]
+	"include": ["src", "./**/*.ts", "./**/*.tsx"]
 }
