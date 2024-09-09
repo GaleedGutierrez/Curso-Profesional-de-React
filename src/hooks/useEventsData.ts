@@ -28,7 +28,7 @@ function useEventData(): UseEventDataReturn {
 			}
 
 			// console.log(data.current);
-		}, 2000);
+		}, 0);
 	}, []);
 	// eslint-disable-next-line no-console
 	// console.log(data);

@@ -46,7 +46,6 @@
 	"devDependencies": {
 		"@commitlint/cli": "^19.3.0",
 		"@commitlint/config-conventional": "^19.2.2",
-		"@fullhuman/postcss-purgecss": "^6.0.0",
 		"@stylistic/eslint-plugin": "^2.4.0",
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
@@ -83,7 +82,8 @@
 		"stylelint-prettier": "^5.0.2",
 		"ts-node": "^10.9.2",
 		"typescript": "^5.2.2",
-		"vite": "^5.3.4"
+		"vite": "^5.3.4",
+		"vite-plugin-purgecss-updated-v5": "^1.2.1"
 	},
 	"prettier": {
 		"endOfLine": "lf",
@@ -93,8 +93,7 @@
 		"*.(j|t)s": "npm run lint:fix",
 		"*{css,s(a|c)ss}": "npm run stylelint:fix",
 		"*.html": "npm run lint-html",
-		"*.md": "npm run lint-md:fix",
-		"*": "npm run prettier:fix"
+		"*.md": "npm run lint-md:fix"
 	},
 	"jscpd": {
 		"threshold": 0.5,
