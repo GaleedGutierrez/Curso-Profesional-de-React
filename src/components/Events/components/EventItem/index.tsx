@@ -1,5 +1,7 @@
 import { FC } from 'react';
 
+import styles from './styles.module.css';
+
 interface Props {
 	info: string | undefined;
 	name: string;
@@ -10,21 +12,24 @@ interface Props {
 }
 
 const EventItem: FC<Props> = ({ info, name, image, handleEventClick }) => (
-	<div>
+	<div className={styles['event-item-container']}>
 		<img
 			alt=""
-			height={200}
 			src={image}
-			width={200}
 		/>
-		<h4>{name}</h4>
-		<p>{info ?? "There isn't info"}</p>
-		<button
-			type="button"
-			onClick={handleEventClick}
-		>
-			Ver más
-		</button>
+		<div className={styles['event-info-container']}>
+			<h4 className={styles['event-info__title']}>{name}</h4>
+			<p className={styles['event-info__text']}>
+				{info ?? "There isn't info"}
+			</p>
+			<button
+				className={styles['event-info__see-more-button']}
+				type="button"
+				onClick={handleEventClick}
+			>
+				Ver más
+			</button>
+		</div>
 	</div>
 );
 
