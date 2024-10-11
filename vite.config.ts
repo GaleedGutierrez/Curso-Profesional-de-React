@@ -42,6 +42,7 @@ export default defineConfig(({ mode }) => {
 					new URL('src/styles/', import.meta.url),
 				),
 				'@utils': fileURLToPath(new URL('src/utils/', import.meta.url)),
+				'@views': fileURLToPath(new URL('src/views/', import.meta.url)),
 				'@images': fileURLToPath(
 					new URL('src/assets/images/', import.meta.url),
 				),
