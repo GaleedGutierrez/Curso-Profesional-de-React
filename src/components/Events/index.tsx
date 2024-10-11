@@ -3,17 +3,17 @@ import { FC } from 'react';
 
 import EventItem from './components/EventItem';
 
-interface Props {
+interface Properties {
 	searchTerm: string;
 }
 
-const Events: FC<Props> = ({ searchTerm }) => {
-	const { events, isLoading, error } = useEventData();
+function handleEventItemClick(id: string): void {
+	// eslint-disable-next-line no-console
+	console.log(`Event with id ${id} clicked`);
+}
 
-	function handleEventItemClick(id: string): void {
-		// eslint-disable-next-line no-console
-		console.log(`Event with id ${id} clicked`);
-	}
+const Events: FC<Properties> = ({ searchTerm }) => {
+	const { events, isLoading, error } = useEventData();
 
 	function renderEvents(): JSX.Element[] {
 		let filteredEvents = events;

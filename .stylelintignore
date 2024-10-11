@@ -1,7 +1,13 @@
 **/*_normalize.css
 **/*_normalize.scss
-/node_modules/*
-/dist/*
-/build/*
 **/font/*
-**/fonts/*
+**/fonts/**
+**/googleAnalytics.js
+**/__snapshots__/**
+**/node_modules/**
+**/dist/**
+**/build/**
+**/coverage/**
+**/playwright-report/**
+**/test-results/**
+**/lighthouse-report/**

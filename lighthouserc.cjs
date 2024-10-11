@@ -17,6 +17,7 @@ module.exports = {
 				'prioritize-lcp-image': 'warn',
 				'image-size-responsive': 'warn',
 				label: 'warn',
+
 				// Performance related
 				'unused-javascript': 'warn',
 				// Not performance related (Accessibility)

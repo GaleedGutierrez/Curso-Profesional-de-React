@@ -1,17 +1,14 @@
 {
 	"compilerOptions": {
-		"composite": true,
-		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
-		"target": "ES2020",
+		"target": "ES2023",
 		"useDefineForClassFields": true,
-		"lib": ["ES2020", "DOM", "DOM.Iterable"],
+		"lib": ["ES2023", "DOM", "DOM.Iterable"],
 		"module": "ESNext",
 		"skipLibCheck": true,
 
 		/* Bundler mode */
 		"moduleResolution": "bundler",
 		"allowImportingTsExtensions": true,
-		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"moduleDetection": "force",
 		"noEmit": true,
@@ -23,19 +20,25 @@
 		"noUnusedParameters": true,
 		"noFallthroughCasesInSwitch": true,
 
+		/* Paths */
 		"baseUrl": "./",
 		"paths": {
+			"/*": ["public/*"],
 			"@src/*": ["src/*"],
 			"@tests/*": ["tests/*"],
+			"@e2e/*": ["e2e/*"],
+			"@public/*": ["public/*"],
+			"@assets/*": ["src/assets/*"],
+			"@components/*": ["src/components/*"],
+			"@context/*": ["src/context/*"],
+			"@data/*": ["src/data/*"],
+			"@hooks/*": ["src/hooks/*"],
+			"@services/*": ["src/services/*"],
+			"@templates/*": ["src/templates/*"],
 			"@styles/*": ["src/styles/*"],
 			"@utils/*": ["src/utils/*"],
-			"@templates/*": ["src/templates/*"],
-			"@images/*": ["assets/images/*"],
-			"@components/*": ["src/components/*"],
-			"@hooks/*": ["src/hooks/*"],
-			"@context/*": ["src/context/*"],
-			"@data/*": ["src/data/*"]
+			"@images/*": ["src/assets/images/*"]
 		}
 	},
-	"include": ["src", "./**/*.ts", "postcss.config.cjs"]
+	"include": ["src", "tests", "**/*.ts", "jest.config.js", "e2e"]
 }

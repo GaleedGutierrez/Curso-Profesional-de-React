@@ -1,12 +1,12 @@
 import { forwardRef, useState } from 'react';
 
-interface Props {
+interface Properties {
 	onSearch: (searchedTerm: string) => void;
 	isEnabled: boolean;
 }
 
-const NavBar = forwardRef<HTMLElement, Props>(
-	({ onSearch, isEnabled }, ref) => {
+const NavBar = forwardRef<HTMLElement, Properties>(
+	({ onSearch, isEnabled }, reference) => {
 		const [search, setSearch] = useState('');
 
 		// console.log({ isEnabled });
@@ -29,14 +29,14 @@ const NavBar = forwardRef<HTMLElement, Props>(
 			onSearch(search);
 		}
 
-		if (ref && typeof ref !== 'function') {
+		if (reference && typeof reference !== 'function') {
 			// eslint-disable-next-line no-console
-			console.log(ref.current);
+			console.log(reference.current);
 		}
 
 		return (
 			<nav
-				ref={ref}
+				ref={reference}
 				style={{
 					marginBlockEnd: '1rem',
 					width: '100%',

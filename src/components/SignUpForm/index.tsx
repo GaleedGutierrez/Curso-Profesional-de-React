@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-interface Props {
+interface Properties {
 	dummy: string;
 }
 
@@ -13,16 +13,17 @@ interface FormData {
 	phone: string;
 }
 
-const SignUpForm: FC<Props> = () => {
+const handleSubmitForm: SubmitHandler<FormData> = (data) => {
+	// eslint-disable-next-line no-console
+	console.log(data);
+};
+
+const SignUpForm: FC<Properties> = () => {
 	const { register, handleSubmit, reset } = useForm<FormData>();
 
 	function handleClearClick(): void {
 		reset();
 	}
-
-	const handleSubmitForm: SubmitHandler<FormData> = (data) =>
-		// eslint-disable-next-line no-console
-		console.log(data);
 
 	return (
 		<form onSubmit={handleSubmit(handleSubmitForm)}>

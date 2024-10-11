@@ -30,7 +30,7 @@ function useEventData(): UseEventDataReturn {
 			// console.log(data.current);
 		}, 0);
 	}, []);
-	// eslint-disable-next-line no-console
+
 	// console.log(data);
 
 	return {

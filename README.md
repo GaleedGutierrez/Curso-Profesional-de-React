@@ -1,20 +1,60 @@
-# Curso Profesional de React
+# React + TypeScript + Vite
 
-![Linter](https://github.com/GaleedGutierrez/Curso-Profesional-de-React/actions/workflows/lint.yml/badge.svg) <!-- markdownlint-disable-line MD001 MD013 -->
-![Lighthouse](https://github.com/GaleedGutierrez/Curso-Profesional-de-React/actions/workflows/lighthouse.yml/badge.svg) <!-- markdownlint-disable-line MD001 MD013 -->
-![Commitlint](https://github.com/GaleedGutierrez/Curso-Profesional-de-React/actions/workflows/commitlint.yml/badge.svg) <!-- markdownlint-disable-line MD001 MD013 -->
-![Sonar Cloud](https://github.com/GaleedGutierrez/Curso-Profesional-de-React/actions/workflows/sonarcloud.yml/badge.svg) <!-- markdownlint-disable-line MD001 MD013 -->
+This template provides a minimal setup to get React working in Vite with HMR
+and some ESLint rules.
 
-## Código Facilito
+Currently, two official plugins are available:
 
-A la hora de crear un repositorio en GitHub activar:
-Security:
+<!-- markdownlint-disable MD013 -->
 
-- Security advisories
-- Code scanning alerts
-- Secret scanning alerts
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md)
+  uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc)
+  uses [SWC](https://swc.rs/) for Fast Refresh
 
-Agregar CI:
+## Expanding the ESLint configuration
 
-- Lighthouse
-- Sonar Cloud
+If you are developing a production application, we recommend updating the
+configuration to enable type aware linter rules:
+
+- Configure the top-level `parserOptions` property like this:
+
+```js
+export default tseslint.config({
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+});
+```
+
+- Replace `tseslint.configs.recommended` to
+  `tseslint.configs.recommendedTypeChecked`
+  or `tseslint.configs.strictTypeChecked`
+- Optionally add `...tseslint.configs.stylisticTypeChecked`
+- Install
+  [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react)
+  and update the config:
+
+```js
+// eslint.config.js
+import react from "eslint-plugin-react";
+
+export default tseslint.config({
+  // Set the react version
+  settings: { react: { version: "18.3" } },
+  plugins: {
+    // Add the react plugin
+    react,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended rules
+    ...react.configs.recommended.rules,
+    ...react.configs["jsx-runtime"].rules,
+  },
+});
+```

@@ -13,7 +13,8 @@ function App(): JSX.Element {
 	const CONTAINER_REF = useRef(null);
 
 	function handleNavbarSearch(searchedTerm: string): void {
-		CONTAINER_REF.current;
+		// eslint-disable-next-line no-console
+		console.log(CONTAINER_REF.current);
 
 		setSearchTerm(normalizeText(searchedTerm));
 	}

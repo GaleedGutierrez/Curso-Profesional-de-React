@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import styles from './styles.module.css';
 
-interface Props {
+interface Properties {
 	info: string | undefined;
 	name: string;
 	image: string;
@@ -11,7 +11,7 @@ interface Props {
 	handleEventClick: () => void;
 }
 
-const EventItem: FC<Props> = ({ info, name, image, handleEventClick }) => (
+const EventItem: FC<Properties> = ({ info, name, image, handleEventClick }) => (
 	<div className={styles['event-item-container']}>
 		<img
 			alt=""
