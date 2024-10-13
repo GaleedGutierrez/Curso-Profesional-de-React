@@ -64,7 +64,6 @@
 		"eslint-import-resolver-typescript": "^3.6.3",
 		"eslint-plugin-check-file": "^2.8.0",
 		"eslint-plugin-editorconfig": "^4.0.3",
-		"eslint-plugin-import": "^2.31.0",
 		"eslint-plugin-import-x": "^4.3.1",
 		"eslint-plugin-jest-dom": "^5.4.0",
 		"eslint-plugin-jsdoc": "^50.3.1",
@@ -119,7 +118,6 @@
 		]
 	},
 	"prettier": {
-		"endOfLine": "lf",
 		"singleAttributePerLine": true
 	},
 	"lint-staged": {
