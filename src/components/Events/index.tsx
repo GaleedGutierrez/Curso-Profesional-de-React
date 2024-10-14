@@ -1,5 +1,6 @@
 import useEventData from '@src/hooks/useEventsData';
 import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import EventItem from './components/EventItem';
 
@@ -7,13 +8,13 @@ interface Properties {
 	searchTerm: string;
 }
 
-function handleEventItemClick(id: string): void {
-	// eslint-disable-next-line no-console
-	console.log(`Event with id ${id} clicked`);
-}
-
 const Events: FC<Properties> = ({ searchTerm }) => {
 	const { events, isLoading, error } = useEventData();
+	const navigate = useNavigate();
+
+	function handleEventItemClick(id: string): void {
+		navigate(`/detail/${id}`);
+	}
 
 	function renderEvents(): JSX.Element[] {
 		let filteredEvents = events;

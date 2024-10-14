@@ -6,12 +6,18 @@ interface Properties {
 	info: string | undefined;
 	name: string;
 	image: string;
-	// eslint-disable-next-line react/no-unused-prop-types
+
 	id: string;
 	handleEventClick: () => void;
 }
 
-const EventItem: FC<Properties> = ({ info, name, image, handleEventClick }) => (
+const EventItem: FC<Properties> = ({
+	info,
+	name,
+	image,
+	id,
+	handleEventClick,
+}) => (
 	<div className={styles['event-item-container']}>
 		<img
 			alt=""
@@ -29,6 +35,12 @@ const EventItem: FC<Properties> = ({ info, name, image, handleEventClick }) => (
 			>
 				Ver más
 			</button>
+			{/* <Link
+				className={`${styles['event-info__see-more-button']}`}
+				to={`/detail/${id}`}
+			>
+				Ver más
+			</Link> */}
 		</div>
 	</div>
 );
