@@ -1,3 +1,4 @@
+/* stylelint-disable color-no-hex */
 img {
 	height: 200px;
 	width: 200px;
@@ -30,5 +31,32 @@ img {
 		/* stylelint-disable-next-line order/properties-order */
 		-webkit-line-clamp: 5;
 		-webkit-box-orient: vertical;
+	}
+}
+
+.event-info__see-more-button {
+	padding: 0.6em 1.2em;
+	border: 1px solid transparent;
+	border-radius: 8px;
+	background-color: #1a1a1a;
+	font-family: inherit;
+	font-size: 1em;
+	font-weight: 500;
+	transition: border-color 0.25s;
+	cursor: pointer;
+
+	&:hover {
+		border-color: #646cff;
+	}
+
+	&:focus,
+	&:focus-visible {
+		outline: 4px auto -webkit-focus-ring-color;
+	}
+
+	@media (prefers-color-scheme: light) {
+		& {
+			background-color: #f9f9f9;
+		}
 	}
 }
