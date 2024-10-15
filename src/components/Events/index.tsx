@@ -31,7 +31,7 @@ const Events: FC<Properties> = ({ searchTerm }) => {
 			<EventItem
 				key={`event-item-${eventItem.id}`}
 				handleEventClick={() => handleEventItemClick(eventItem.id)}
-				id={eventItem.id}
+				// id={eventItem.id}
 				image={eventItem.images[0].url}
 				info={eventItem.info}
 				name={eventItem.name}
