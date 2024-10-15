@@ -6,8 +6,7 @@ interface Properties {
 	info: string | undefined;
 	name: string;
 	image: string;
-
-	id: string;
+	// id: string;
 	handleEventClick: () => void;
 }
 
@@ -15,7 +14,7 @@ const EventItem: FC<Properties> = ({
 	info,
 	name,
 	image,
-	id,
+	// id,
 	handleEventClick,
 }) => (
 	<div className={styles['event-item-container']}>
