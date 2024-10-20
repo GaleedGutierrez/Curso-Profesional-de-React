@@ -86,11 +86,11 @@
 		// React rules - React Perf
 		"react-perf/jsx-no-new-object-as-prop": "error",
 		"react-perf/jsx-no-new-array-as-prop": "error",
-		"react-perf/jsx-no-new-function-as-prop": "off",
+		"react-perf/jsx-no-new-function-as-prop": "error",
 		"react-perf/jsx-no-jsx-as-prop": "error",
 
 		// JSX a11y rules
-		"jsx_a11y/anchor-is-valid": "off",
+		"jsx_a11y/anchor-is-valid": "error",
 		"jsx_a11y/alt-text": "error",
 		"jsx_a11y/anchor-has-content": "error",
 		"jsx_a11y/aria-activedescendant-has-tabindex": "error",

@@ -33,6 +33,7 @@
 			"@context/*": ["src/context/*"],
 			"@data/*": ["src/data/*"],
 			"@hooks/*": ["src/hooks/*"],
+			"@models/*": ["src/models/*"],
 			"@pages/*": ["src/pages/*"],
 			"@routes/*": ["src/routes/*"],
 			"@state/*": ["src/state/*"],
@@ -44,5 +45,12 @@
 			"@images/*": ["src/assets/images/*"]
 		}
 	},
-	"include": ["src", "tests", "**/*.ts", "jest.config.js", "e2e"]
+	"include": [
+		"src",
+		"tests",
+		"**/*.ts",
+		"jest.config.js",
+		"e2e",
+		"src/ErrorBoundary.tsx"
+	]
 }

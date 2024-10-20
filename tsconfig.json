@@ -12,6 +12,7 @@
 			"@context/*": ["src/context/*"],
 			"@data/*": ["src/data/*"],
 			"@hooks/*": ["src/hooks/*"],
+			"@models/*": ["src/models/*"],
 			"@pages/*": ["src/pages/*"],
 			"@routes/*": ["src/routes/*"],
 			"@state/*": ["src/state/*"],

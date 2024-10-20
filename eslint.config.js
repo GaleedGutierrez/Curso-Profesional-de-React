@@ -6,6 +6,7 @@ import stylistic from '@stylistic/eslint-plugin';
 import vitest from '@vitest/eslint-plugin';
 import checkFile from 'eslint-plugin-check-file';
 import eslintPluginImportX from 'eslint-plugin-import-x';
+import jsdoc from 'eslint-plugin-jsdoc';
 import eslintPluginJsonc from 'eslint-plugin-jsonc';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import oxlint from 'eslint-plugin-oxlint';
@@ -414,7 +415,7 @@ export default tsEslintConfig(
 					format: ['PascalCase'],
 				},
 				{
-					selector: 'variable',
+					selector: ['variable'],
 					types: ['boolean'],
 					format: ['PascalCase', 'UPPER_CASE'],
 
@@ -458,35 +459,51 @@ export default tsEslintConfig(
 				'error',
 				{
 					default: [
+						// Index signature for interfaces
 						'signature',
 						'call-signature',
+
+						// Fields o variables
 						'public-instance-field',
 						'protected-instance-field',
 						'private-instance-field',
 						'#private-instance-field',
+
 						'public-static-field',
 						'protected-static-field',
 						'private-static-field',
 						'#private-static-field',
+
 						'public-decorated-field',
 						'protected-decorated-field',
 						'private-decorated-field',
+
 						'public-abstract-field',
 						'protected-abstract-field',
+
 						'public-field',
 						'protected-field',
 						'private-field',
 						'#private-field',
+
 						'instance-field',
 						'static-field',
 						'decorated-field',
 						'abstract-field',
+
 						'field',
+
+						// Static initialization
 						'static-initialization',
+
+						// Constructors
 						'public-constructor',
 						'protected-constructor',
 						'private-constructor',
+
 						'constructor',
+
+						// Methods
 						'public-instance-method',
 						'protected-instance-method',
 						'private-instance-method',
@@ -508,7 +525,10 @@ export default tsEslintConfig(
 						'static-method',
 						'decorated-method',
 						'abstract-method',
+
 						'method',
+
+						// Getters
 						'public-instance-get',
 						'protected-instance-get',
 						'private-instance-get',
@@ -530,28 +550,37 @@ export default tsEslintConfig(
 						'static-get',
 						'decorated-get',
 						'abstract-get',
+
 						'get',
+
+						// Setters
 						'public-instance-set',
 						'protected-instance-set',
 						'private-instance-set',
 						'#private-instance-set',
+
 						'public-static-set',
 						'protected-static-set',
 						'private-static-set',
 						'#private-static-set',
+
 						'public-decorated-set',
 						'protected-decorated-set',
 						'private-decorated-set',
+
 						'public-abstract-set',
 						'protected-abstract-set',
+
 						'public-set',
 						'protected-set',
 						'private-set',
 						'#private-set',
+
 						'instance-set',
 						'static-set',
 						'decorated-set',
 						'abstract-set',
+
 						'set',
 					],
 				},
@@ -568,6 +597,157 @@ export default tsEslintConfig(
 					checksVoidReturn: {
 						attributes: false,
 					},
+				},
+			],
+			'@typescript-eslint/member-ordering': [
+				'error',
+				{
+					default: [
+						// Index signature for interfaces
+						'signature',
+						'call-signature',
+
+						// Fields o variables
+						'public-static-field',
+						'protected-static-field',
+						'private-static-field',
+						'#private-static-field',
+
+						'public-instance-field',
+						'protected-instance-field',
+						'private-instance-field',
+						'#private-instance-field',
+
+						'public-decorated-field',
+						'protected-decorated-field',
+						'private-decorated-field',
+
+						'public-abstract-field',
+						'protected-abstract-field',
+
+						'public-field',
+						'protected-field',
+						'private-field',
+						'#private-field',
+
+						'static-field',
+						'instance-field',
+						'decorated-field',
+						'abstract-field',
+
+						// Static initialization
+						'static-initialization',
+
+						'field',
+
+						// Constructors
+						'public-constructor',
+						'protected-constructor',
+						'private-constructor',
+
+						'constructor',
+
+						// Methods
+						'public-static-method',
+						'protected-static-method',
+						'private-static-method',
+						'#private-static-method',
+						'public-instance-method',
+						'protected-instance-method',
+						'private-instance-method',
+						'#private-instance-method',
+						'public-decorated-method',
+						'protected-decorated-method',
+						'private-decorated-method',
+						'public-abstract-method',
+						'protected-abstract-method',
+						'public-method',
+						'protected-method',
+						'private-method',
+						'#private-method',
+						'static-method',
+						'instance-method',
+						'decorated-method',
+						'abstract-method',
+
+						'method',
+
+						// Getters
+						'public-static-get',
+						'protected-static-get',
+						'private-static-get',
+						'#private-static-get',
+						'public-instance-get',
+						'protected-instance-get',
+						'private-instance-get',
+						'#private-instance-get',
+						'public-decorated-get',
+						'protected-decorated-get',
+						'private-decorated-get',
+						'public-abstract-get',
+						'protected-abstract-get',
+						'public-get',
+						'protected-get',
+						'private-get',
+						'#private-get',
+						'static-get',
+						'instance-get',
+						'decorated-get',
+						'abstract-get',
+
+						'get',
+
+						// Setters
+						'public-static-set',
+						'protected-static-set',
+						'private-static-set',
+						'#private-static-set',
+
+						'public-instance-set',
+						'protected-instance-set',
+						'private-instance-set',
+						'#private-instance-set',
+
+						'public-decorated-set',
+						'protected-decorated-set',
+						'private-decorated-set',
+
+						'public-abstract-set',
+						'protected-abstract-set',
+
+						'public-set',
+						'protected-set',
+						'private-set',
+						'#private-set',
+
+						'static-set',
+						'instance-set',
+						'decorated-set',
+						'abstract-set',
+
+						'set',
+					],
+				},
+			],
+		},
+	},
+	{
+		files: ['**/*.jsx'],
+		rules: {
+			'sort-class-members/sort-class-members': [
+				'error',
+				{
+					order: [
+						'[static-properties]',
+						'[properties]',
+						'[conventional-private-properties]',
+						'constructor',
+						'[static-methods]',
+						'[methods]',
+						'[conventional-private-methods]',
+					],
+
+					accessorPairPositioning: 'getThenSet',
 				},
 			],
 		},
@@ -857,12 +1037,9 @@ export default tsEslintConfig(
 		},
 	},
 	{
+		...jsdoc.configs['flat/recommended'],
+		...sortClassMembers.configs['flat/recommended'],
 		files: ['**/*.js', '**/*.mjs', '**/*.cjs', '**/jsx'],
-
-		plugins: {
-			'sort-class-members': sortClassMembers,
-		},
-
 		rules: {
 			'sort-class-members/sort-class-members': [
 				'error',
