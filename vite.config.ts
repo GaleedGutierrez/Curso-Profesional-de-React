@@ -2,12 +2,13 @@ import { fileURLToPath } from 'node:url';
 
 import react from '@vitejs/plugin-react-swc';
 import Oxlint from 'unplugin-oxlint/vite';
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import pluginPurgeCss from 'vite-plugin-purgecss-updated-v5';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
 	const isDevelopment = mode === 'development';
+	const environment = loadEnv(mode, process.cwd(), '');
 
 	return {
 		plugins: [
@@ -27,6 +28,9 @@ export default defineConfig(({ mode }) => {
 				'@src': fileURLToPath(new URL('src/', import.meta.url)),
 				'@tests': fileURLToPath(new URL('tests/', import.meta.url)),
 				'@e2e': fileURLToPath(new URL('e2e/', import.meta.url)),
+				'@assets': fileURLToPath(
+					new URL('src/assets/', import.meta.url),
+				),
 				'@components': fileURLToPath(
 					new URL('src/components/', import.meta.url),
 				),
@@ -35,6 +39,17 @@ export default defineConfig(({ mode }) => {
 				),
 				'@data': fileURLToPath(new URL('src/data/', import.meta.url)),
 				'@hooks': fileURLToPath(new URL('src/hooks/', import.meta.url)),
+				'@models': fileURLToPath(
+					new URL('src/models/', import.meta.url),
+				),
+				'@pages': fileURLToPath(new URL('src/pages/', import.meta.url)),
+				'@routes': fileURLToPath(
+					new URL('src/routes/', import.meta.url),
+				),
+				'@state': fileURLToPath(new URL('src/state/', import.meta.url)),
+				'@services': fileURLToPath(
+					new URL('src/services/', import.meta.url),
+				),
 				'@templates': fileURLToPath(
 					new URL('src/templates/', import.meta.url),
 				),
@@ -50,6 +65,11 @@ export default defineConfig(({ mode }) => {
 					new URL('src/assets/fonts/', import.meta.url),
 				),
 			},
+		},
+		define: {
+			'process.env.REACT_APP_API_KEY_TICKERMASTER': JSON.stringify(
+				environment.REACT_APP_API_KEY_TICKERMASTER,
+			),
 		},
 		test: {
 			clearMocks: true, // Automatically clear mock calls, instances, contexts and results before every test

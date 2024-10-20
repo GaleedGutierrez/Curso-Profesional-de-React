@@ -1,0 +1,44 @@
+import { Component, ErrorInfo, ReactNode } from 'react';
+
+interface ErrorBoundaryState {
+	hasError: boolean;
+}
+
+interface ErrorBoundaryProperties {
+	children: ReactNode;
+}
+
+class ErrorBoundary extends Component<
+	ErrorBoundaryProperties,
+	ErrorBoundaryState
+> {
+	constructor(properties: ErrorBoundaryProperties) {
+		super(properties);
+
+		this.state = { hasError: false };
+	}
+
+	static getDerivedStateFromError(error: Error): ErrorBoundaryState {
+		console.info(`Devired Error: ${error}`);
+
+		return { hasError: true };
+	}
+
+	componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
+		console.info(`Error: ${error}`);
+		console.info(`Error info: ${JSON.stringify(errorInfo)}`);
+	}
+
+	render(): ReactNode {
+		const { hasError } = this.state;
+		const { children } = this.props;
+
+		if (hasError) {
+			return <h1>Ops! I did it again ;)</h1>;
+		}
+
+		return children;
+	}
+}
+
+export default ErrorBoundary;

@@ -1,42 +1,53 @@
-import useEventData from '@src/hooks/useEventsData';
+import { useFetch } from '@src/hooks';
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { Events as EventsType } from '../../models/index';
 import EventItem from './components/EventItem';
 
 interface Properties {
 	searchTerm: string;
 }
 
+const BASE_URL = 'https://app.ticketmaster.com/discovery/v2/events.json';
+const API_KEY = process.env.REACT_APP_API_KEY_TICKERMASTER;
+const COUNTRY_CODE = 'MX';
+const URL = `${BASE_URL}?apikey=${API_KEY}&countryCode=${COUNTRY_CODE}`;
+
 const Events: FC<Properties> = ({ searchTerm }) => {
-	const { events, isLoading, error } = useEventData();
 	const navigate = useNavigate();
+	const { data, isLoading, error } = useFetch<EventsType>(URL);
+	// eslint-disable-next-line no-underscore-dangle
+	const EVENTS = data?._embedded.events ?? [];
 
-	function handleEventItemClick(id: string): void {
-		navigate(`/detail/${id}`);
-	}
-
+	// const EVENTS
 	function renderEvents(): JSX.Element[] {
-		let filteredEvents = events;
+		let filteredEvents = EVENTS;
 
 		if (searchTerm) {
 			const SEARCH_TERM = searchTerm.toLowerCase();
 
-			filteredEvents = events.filter((eventItem) =>
+			filteredEvents = EVENTS.filter((eventItem) =>
 				eventItem.name.toLowerCase().includes(SEARCH_TERM),
 			);
 		}
 
-		return filteredEvents.map((eventItem) => (
-			<EventItem
-				key={`event-item-${eventItem.id}`}
-				handleEventClick={() => handleEventItemClick(eventItem.id)}
-				// id={eventItem.id}
-				image={eventItem.images[0].url}
-				info={eventItem.info}
-				name={eventItem.name}
-			/>
-		));
+		return filteredEvents.map((eventItem) => {
+			function onEventItemClick(): void {
+				navigate(`/detail/${eventItem.id}`);
+			}
+
+			return (
+				<EventItem
+					key={`event-item-${eventItem.id}`}
+					handleEventClick={onEventItemClick}
+					// id={eventItem.id}
+					image={eventItem.images[0].url}
+					info={eventItem.info}
+					name={eventItem.name}
+				/>
+			);
+		});
 	}
 
 	if (error) {
@@ -44,12 +55,7 @@ const Events: FC<Properties> = ({ searchTerm }) => {
 	}
 
 	if (isLoading) {
-		return (
-			<div>
-				Loading results...
-				<div>{renderEvents()}</div>
-			</div>
-		);
+		return <div>Loading results...</div>;
 	}
 
 	return <div>{renderEvents()}</div>;
