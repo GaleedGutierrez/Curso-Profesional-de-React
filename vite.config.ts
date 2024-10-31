@@ -1,20 +1,16 @@
 import { fileURLToPath } from 'node:url';
 
 import react from '@vitejs/plugin-react-swc';
-import Oxlint from 'unplugin-oxlint/vite';
 import { defineConfig, loadEnv } from 'vite';
 import pluginPurgeCss from 'vite-plugin-purgecss-updated-v5';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
-	const isDevelopment = mode === 'development';
 	const environment = loadEnv(mode, process.cwd(), '');
 
 	return {
 		plugins: [
 			react(),
-			// eslint-disable-next-line new-cap
-			isDevelopment && Oxlint(),
 			pluginPurgeCss({
 				variables: true,
 			}),
@@ -25,7 +21,7 @@ export default defineConfig(({ mode }) => {
 		},
 		resolve: {
 			alias: {
-				'@src': fileURLToPath(new URL('src/', import.meta.url)),
+				'@': fileURLToPath(new URL('src/', import.meta.url)),
 				'@tests': fileURLToPath(new URL('tests/', import.meta.url)),
 				'@e2e': fileURLToPath(new URL('e2e/', import.meta.url)),
 				'@assets': fileURLToPath(

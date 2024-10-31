@@ -1,8 +1,6 @@
-import Error404 from '@src/views/Error404/indes';
-import Profile from '@src/views/Profile';
-import Details from '@views/Detail';
-import Home from '@views/Home';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+import { Details, Error404, Home, Profile } from '@/views';
 
 const ROUTER = createBrowserRouter([
 	{
