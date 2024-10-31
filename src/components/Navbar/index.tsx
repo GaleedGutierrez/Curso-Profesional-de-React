@@ -9,8 +9,6 @@ const NavBar = forwardRef<HTMLElement, Properties>(
 	({ onSearch, isEnabled }, reference) => {
 		const [search, setSearch] = useState('');
 
-		// console.log({ isEnabled });
-
 		function handleInputChange(
 			event: React.ChangeEvent<HTMLInputElement>,
 		): void {
@@ -30,8 +28,7 @@ const NavBar = forwardRef<HTMLElement, Properties>(
 		}
 
 		if (reference && typeof reference !== 'function') {
-			// eslint-disable-next-line no-console
-			console.log(reference.current);
+			// console.log(reference.current);
 		}
 
 		return (
@@ -50,7 +47,7 @@ const NavBar = forwardRef<HTMLElement, Properties>(
 				)}
 				<input
 					placeholder="Busca tu evento favorito"
-					type="text"
+					type="search"
 					value={search}
 					style={{
 						flex: 1,
