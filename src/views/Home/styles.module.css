@@ -1,0 +1,40 @@
+.pagination-container {
+	display: flex;
+	gap: var(--space-3);
+	justify-content: center;
+	align-items: center;
+
+	a {
+		cursor: pointer;
+	}
+}
+
+.pagination-container__page {
+	font-size: var(--fs-title-lg);
+	font-weight: var(--weight-bold);
+}
+
+.pagination-container__page--active {
+	border-radius: var(--border-radius-circle);
+	background-color: white;
+
+	a {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 3rem;
+		width: 3rem;
+		color: black;
+	}
+}
+
+.pagination-container__previous,
+.pagination-container__next {
+	font-size: var(--fs-title-xl);
+}
+
+.pagination-container__page--disabled {
+	a {
+		cursor: not-allowed;
+	}
+}
