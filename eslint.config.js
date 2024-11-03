@@ -12,7 +12,6 @@ import jsxA11y from 'eslint-plugin-jsx-a11y';
 import oxlint from 'eslint-plugin-oxlint';
 import playwright from 'eslint-plugin-playwright';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
-// eslint-disable-next-line import-x/default
 import reactPlugin from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
@@ -67,7 +66,6 @@ export default tsEslintConfig(
 		},
 
 		languageOptions: {
-			// eslint-disable-next-line import-x/no-named-as-default-member
 			...reactPlugin.configs.flat.recommended.languageOptions,
 			ecmaVersion: 'latest',
 			sourceType: 'module',
@@ -326,7 +324,14 @@ export default tsEslintConfig(
 						camelCase: true,
 						pascalCase: true,
 					},
-					ignore: [/\.json$/],
+					ignore: [/\.json$/, /vite-env\.d\.ts$/],
+				},
+			],
+
+			'unicorn/prevent-abbreviations': [
+				'error',
+				{
+					checkFilenames: false,
 				},
 			],
 
@@ -754,9 +759,9 @@ export default tsEslintConfig(
 	},
 	{
 		files: ['**/*.tsx', '**/*.jsx'],
-		// eslint-disable-next-line import-x/no-named-as-default-member
+
 		...reactPlugin.configs.flat.recommended,
-		// eslint-disable-next-line import-x/no-named-as-default-member
+
 		...reactPlugin.configs.flat['jsx-runtime'],
 		plugins: {
 			react: reactPlugin,

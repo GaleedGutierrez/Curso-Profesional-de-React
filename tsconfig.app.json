@@ -43,7 +43,8 @@
 			"@utils/*": ["src/utils/*"],
 			"@views/*": ["src/views/*"],
 			"@images/*": ["src/assets/images/*"]
-		}
+		},
+		"types": ["vite/client"]
 	},
 	"include": [
 		"src",

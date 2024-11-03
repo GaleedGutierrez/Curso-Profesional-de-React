@@ -1,4 +1,5 @@
 {
+	"$schema": "./node_modules/oxlint/configuration_schema.json",
 	"plugins": [
 		"react",
 		"unicorn",
@@ -17,6 +18,11 @@
 		"unicorn",
 		"jest"
 	],
+	"env": {
+		"browser": true,
+		"node": true
+	},
+	"settings": {},
 	"rules": {
 		// Eslint rules
 		"array-callback-return": [
@@ -50,7 +56,6 @@
 		"typescript/explicit-function-return-type": "error",
 		"typescript/no-non-null-assertion": "error",
 		"typescript/consistent-type-definitions": "error",
-		"typescript/no-useless-constructor": "error",
 		"typescript/prefer-for-of": "error",
 		"typescript/no-explicit-any": "error",
 		"typescript/no-namespace": "error",
@@ -62,14 +67,6 @@
 		"import/no-webpack-loader-syntax": "error",
 
 		// React rules
-		"react/ button-has-type": [
-			"error",
-			{
-				"button": true,
-				"submit": true,
-				"reset": false
-			}
-		],
 		"react/jsx-boolean-value": ["error", "never"],
 		"react/jsx-curly-brace-presence": [
 			"error",
@@ -86,7 +83,6 @@
 		// React rules - React Perf
 		"react-perf/jsx-no-new-object-as-prop": "error",
 		"react-perf/jsx-no-new-array-as-prop": "error",
-		"react-perf/jsx-no-new-function-as-prop": "error",
 		"react-perf/jsx-no-jsx-as-prop": "error",
 
 		// JSX a11y rules
@@ -138,7 +134,6 @@
 		// "nextjs/no-unwanted-polyfillio": "error",
 
 		//  Promise rules
-		"promise/avoid-new": "off",
 		"promise/no-return-in-finally": "warn",
 		"promise/valid-params": "warn",
 		"promise/catch-or-return": "error",
@@ -195,9 +190,6 @@
 		// Security rules
 		"security/api-keys": "error",
 
-		// Tree Shake rules
-		"tree-shaking/no-side-effects-in-initialization": "error",
-
 		//  Node rules
 		"node/no-exports-assign": "error",
 
@@ -208,16 +200,6 @@
 		"unicorn/error-message": "error",
 		"unicorn/escape-case": "error",
 		"unicorn/explicit-length-check": "error",
-		"unicorn/filename-case": [
-			"error",
-			{
-				"cases": {
-					"camelCase": true,
-					"pascalCase": true
-				},
-				"ignore": ["/.json$/"]
-			}
-		],
 		"unicorn/no-await-expression-member": "error",
 		"unicorn/no-console-spaces": "error",
 		"unicorn/no-null": "error",
