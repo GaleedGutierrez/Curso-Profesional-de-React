@@ -1,7 +1,6 @@
 /* stylelint-disable color-no-hex */
 img {
-	height: 200px;
-	width: 200px;
+	inline-size: 200px;
 }
 
 .event-item-container {

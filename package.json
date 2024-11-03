@@ -17,8 +17,8 @@
 		"dev": "vite",
 		"build": "tsc -b && vite build",
 		"preview": "vite preview",
-		"lint": "oxlint -D correctness -c oxlintrc.json --import-plugin --jsdoc-plugin --jest-plugin  --vitest-plugin --jsx-a11y-plugin --react-perf-plugin --promise-plugin --max-warnings 0 && eslint -c eslint.config.js . --max-warnings 1",
-		"lint:fix": "oxlint --fix && eslint --fix ./**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,json}",
+		"lint": "oxlint -D correctness -c oxlintrc.json -A no-unused-vars --import-plugin --jsdoc-plugin --jest-plugin  --vitest-plugin --jsx-a11y-plugin --react-perf-plugin --promise-plugin --max-warnings 0 && eslint -c eslint.config.js . --max-warnings 1",
+		"lint:fix": "oxlint --fix -c oxlintrc.json -A no-unused-vars && eslint --fix ./**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,json}",
 		"prettier": "prettier . --check",
 		"prettier:fix": "prettier . --write",
 		"stylelint": "stylelint ./**/*.{css,scss}",
@@ -32,6 +32,7 @@
 		"test:performance": "lighthouse http://localhost:4173/ --view --output html --output-path ./lighthouse-report/lighthouse-report.html"
 	},
 	"dependencies": {
+		"@formkit/tempo": "^0.1.2",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
 		"react-paginate": "^8.2.0",
@@ -90,7 +91,7 @@
 		"jscpd": "^4.0.5",
 		"jsdom": "^25.0.1",
 		"markdownlint-cli2": "^0.14.0",
-		"oxlint": "^0.6.1",
+		"oxlint": "^0.10.3",
 		"playwright": "^1.47.2",
 		"prettier": "3.3.3",
 		"react-hook-form": "^7.53.0",

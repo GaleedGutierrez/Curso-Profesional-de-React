@@ -25,9 +25,10 @@ const useFetch = <T>(
 	const CONTROLLER = controller ?? new AbortController();
 
 	const fetchData = async (url: string): Promise<void> => {
-		try {
-			setIsLoading(true);
+		setError(undefined);
+		setIsLoading(true);
 
+		try {
 			const RESPONSE = await fetch(url, {
 				method: restMethod,
 				signal: CONTROLLER.signal,

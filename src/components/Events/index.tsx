@@ -1,6 +1,5 @@
 import { Events as EventsType } from '@models/index';
 import { FC } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import EventItem from './components/EventItem';
 
@@ -12,8 +11,6 @@ interface Properties {
 }
 
 const Events: FC<Properties> = ({ searchTerm, data, isLoading, error }) => {
-	const navigate = useNavigate();
-
 	console.info(searchTerm);
 
 	// eslint-disable-next-line no-underscore-dangle
@@ -30,22 +27,20 @@ const Events: FC<Properties> = ({ searchTerm, data, isLoading, error }) => {
 		// 	);
 		// }
 
-		return EVENTS.map((eventItem) => {
-			function onEventItemClick(): void {
-				navigate(`/detail/${eventItem.id}`);
-			}
+		return EVENTS.map((eventItem) => (
+			// function onEventItemClick(): void {
+			// 	navigate(`/detail/${eventItem.id}`);
+			// }
 
-			return (
-				<EventItem
-					key={`event-item-${eventItem.id}`}
-					handleEventClick={onEventItemClick}
-					// id={eventItem.id}
-					image={eventItem.images[0].url}
-					info={eventItem.info}
-					name={eventItem.name}
-				/>
-			);
-		});
+			<EventItem
+				key={`event-item-${eventItem.id}`}
+				// handleEventClick={onEventItemClick}
+				id={eventItem.id}
+				images={eventItem.images}
+				info={eventItem.info}
+				name={eventItem.name}
+			/>
+		));
 	}
 
 	if (error) {
@@ -53,7 +48,7 @@ const Events: FC<Properties> = ({ searchTerm, data, isLoading, error }) => {
 	}
 
 	if (isLoading) {
-		return <p>Loading results...</p>;
+		return <p>Loading events...</p>;
 	}
 
 	if (EVENTS.length === 0) {

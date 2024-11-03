@@ -10,7 +10,7 @@ import { normalizeText } from '@/utils';
 import styles from './styles.module.css';
 
 const BASE_URL = 'https://app.ticketmaster.com/discovery/v2/events.json';
-const API_KEY = process.env.REACT_APP_API_KEY_TICKERMASTER;
+const API_KEY = import.meta.env.VITE_API_KEY_TICKERMASTER as string;
 const COUNTRY_CODE = 'MX';
 const URL = `${BASE_URL}?apikey=${API_KEY}&countryCode=${COUNTRY_CODE}`;
 
