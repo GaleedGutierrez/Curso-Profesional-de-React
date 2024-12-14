@@ -782,15 +782,6 @@ export default tsEslintConfig(
 				},
 			],
 
-			'react/button-has-type': [
-				'error',
-				{
-					button: true,
-					submit: true,
-					reset: false,
-				},
-			],
-
 			'react/default-props-match-prop-types': [
 				'error',
 				{

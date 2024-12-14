@@ -1,4 +1,7 @@
 import { forwardRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import styles from './styles.module.css';
 
 interface Properties {
 	onSearch: (searchedTerm: string) => void;
@@ -34,33 +37,18 @@ const NavBar = forwardRef<HTMLElement, Properties>(
 		return (
 			<nav
 				ref={reference}
-				style={{
-					marginBlockEnd: '1rem',
-					width: '100%',
-					display: 'flex',
-				}}
+				className={styles['navbar-container']}
 			>
-				{isEnabled ? (
-					<p style={{ flex: 1, display: 'flex' }}>Boletera</p>
-				) : (
-					''
-				)}
+				{isEnabled ? <p>Boletera</p> : ''}
 				<input
+					className={styles['navbar__search']}
 					placeholder="Busca tu evento favorito"
 					type="search"
 					value={search}
-					style={{
-						flex: 1,
-						display: 'flex',
-						justifyContent: 'center',
-						padding: '4px 8px',
-						borderRadius: '4px',
-						border: 'none',
-						width: '200px',
-					}}
 					onChange={handleInputChange}
 					onKeyUp={handleInputKeyUp}
 				/>
+				<Link to="/profile/my-info">Mi perfil</Link>
 			</nav>
 		);
 	},

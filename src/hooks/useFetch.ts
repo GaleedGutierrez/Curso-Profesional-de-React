@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 
-type RestMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
-
 interface Parameters<T> {
 	data?: T;
 	isLoading: boolean;
@@ -9,15 +7,15 @@ interface Parameters<T> {
 	fetchData: (url: string) => Promise<void>;
 }
 
-interface FetchProperties {
-	restMethod?: RestMethod;
+interface FetchProperties extends RequestInit {
 	controller?: AbortController;
 }
 
 const useFetch = <T>(
 	url: string,
-	{ restMethod = 'GET', controller }: FetchProperties = {},
+	options: FetchProperties = {},
 ): Parameters<T> => {
+	const { controller } = options;
 	const [data, setData] = useState<T>();
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState<Error>();
@@ -30,7 +28,6 @@ const useFetch = <T>(
 
 		try {
 			const RESPONSE = await fetch(url, {
-				method: restMethod,
 				signal: CONTROLLER.signal,
 			});
 
@@ -63,7 +60,7 @@ const useFetch = <T>(
 				CONTROLLER.abort();
 			}
 		};
-	}, [url, restMethod]);
+	}, [url]);
 
 	return { data, isLoading, error, fetchData };
 };

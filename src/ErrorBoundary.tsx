@@ -19,7 +19,7 @@ class ErrorBoundary extends Component<
 	}
 
 	static getDerivedStateFromError(error: Error): ErrorBoundaryState {
-		console.info(`Devired Error: ${error}`);
+		console.info(`Derived  Error: ${error}`);
 
 		return { hasError: true };
 	}

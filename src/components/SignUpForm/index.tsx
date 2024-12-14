@@ -1,25 +1,31 @@
-import { FC } from 'react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { SingUpData, singUpSchema } from '@models/index';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-interface Properties {
-	dummy: string;
-}
+import InputForm from '../InputForm';
 
-interface FormData {
-	name: string;
-	age: string;
-	address: string;
-	zipcode: string;
-	phone: string;
-}
-
-const handleSubmitForm: SubmitHandler<FormData> = (data) => {
+const handleSubmitForm: SubmitHandler<SingUpData> = (data) => {
 	// eslint-disable-next-line no-console
 	console.log(data);
 };
 
-const SignUpForm: FC<Properties> = () => {
-	const { register, handleSubmit, reset } = useForm<FormData>();
+const SignUpForm = (): JSX.Element => {
+	const {
+		control,
+		handleSubmit,
+		reset,
+		formState: { errors },
+	} = useForm<SingUpData>({
+		resolver: zodResolver(singUpSchema),
+		mode: 'onBlur',
+		defaultValues: {
+			name: '',
+			age: 0,
+			address: '',
+			zipCode: '',
+			phoneNumber: '',
+		},
+	});
 
 	function handleClearClick(): void {
 		reset();
@@ -27,66 +33,52 @@ const SignUpForm: FC<Properties> = () => {
 
 	return (
 		<form onSubmit={handleSubmit(handleSubmitForm)}>
-			<label htmlFor="">
-				<span>Name</span>
-				<input
-					id=""
-					name=""
-					placeholder="Your name"
-					type="text"
-					{...(register('name'), { required: true })}
-				/>
-			</label>
+			<InputForm
+				control={control}
+				error={errors.name}
+				label="Name"
+				name="name"
+				placeholder="Juan"
+				type="text"
+			/>
 			<br />
-			<label htmlFor="">
-				<span>Age</span>
-				<input
-					id=""
-					placeholder="Your age"
-					type="number"
-					{...(register('age'), { required: true })}
-				/>
-			</label>
+			<InputForm
+				control={control}
+				error={errors.age}
+				label="Age"
+				name="age"
+				placeholder="32"
+				type="number"
+			/>
 			<br />
-			<label htmlFor="">
-				<span>Address</span>
-				<input
-					autoComplete="street-address"
-					id=""
-					placeholder="Your address"
-					type="text"
-					{...(register('address'), { required: true })}
-				/>
-			</label>
+			<InputForm
+				control={control}
+				error={errors.address}
+				label="Address"
+				name="address"
+				placeholder="email@email.com"
+				type="email"
+			/>
 			<br />
-			<label htmlFor="">
-				<span>Zip code</span>
-				<input
-					autoComplete="postal-code"
-					id=""
-					placeholder="Your Zip code"
-					type="text"
-					{...(register('zipcode'), { required: true })}
-				/>
-			</label>
+			<InputForm
+				control={control}
+				error={errors.zipCode}
+				label="Zip Code"
+				name="zipCode"
+				placeholder="zzzz"
+				type="zip"
+			/>
 			<br />
-			<label htmlFor="">
-				<span>Phone</span>
-				<input
-					autoComplete="tel"
-					id=""
-					placeholder="Your phone number"
-					type="number"
-					{...(register('phone'), { required: true })}
-				/>
-			</label>
+			<InputForm
+				control={control}
+				error={errors.phoneNumber}
+				label="Phone Number"
+				name="phoneNumber"
+				placeholder="78951354822"
+				type="number"
+			/>
 			<div>
-				<button
-					type="button"
-					onClick={handleClearClick}
-				>
-					Clear
-				</button>
+				<button onClick={handleClearClick}>Clear</button>
 				<button type="submit">Submit</button>
 			</div>
 		</form>

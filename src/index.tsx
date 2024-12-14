@@ -4,14 +4,11 @@ import '@styles/index.css';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
-import App from './App.tsx';
-import ErrorBoundary from './ErrorBoundary.tsx';
+import AppHookContainer from './AppHookContainer';
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 createRoot(document.querySelector('#root')!).render(
 	<StrictMode>
-		<ErrorBoundary>
-			<App />
-		</ErrorBoundary>
+		<AppHookContainer />
 	</StrictMode>,
 );

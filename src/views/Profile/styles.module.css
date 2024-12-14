@@ -1,0 +1,15 @@
+.tabs-container {
+	display: flex;
+	gap: var(--space-5);
+	margin-block: var(--space-8) var(--space-5);
+}
+
+.tab {
+	font-size: var(--fs-title-lg);
+}
+
+.tab--active {
+	padding-block-end: var(--space-1);
+	/* stylelint-disable-next-line color-no-hex */
+	border-block-end: var(--border-1) solid #747bff;
+}

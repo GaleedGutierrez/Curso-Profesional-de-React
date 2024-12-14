@@ -1,9 +1,9 @@
 import './App.css';
 
-import Routes from './routes';
+import AppRouter from './AppRouter';
 
 function App(): JSX.Element {
-	return <Routes />;
+	return <AppRouter />;
 }
 
 export default App;

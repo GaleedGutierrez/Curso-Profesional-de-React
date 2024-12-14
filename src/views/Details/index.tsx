@@ -6,7 +6,7 @@ import { Event } from '@/models';
 
 const Details = (): JSX.Element => {
 	const { eventId } = useParams();
-	const API_KEY = import.meta.env.VITE_API_KEY_TICKERMASTER as string;
+	const API_KEY = import.meta.env.VITE_API_KEY_TICKERMASTER;
 	const URL = `https://app.ticketmaster.com/discovery/v2/events/${eventId}.json?apikey=${API_KEY}`;
 	const { data, error, isLoading } = useFetch<Event>(URL);
 
