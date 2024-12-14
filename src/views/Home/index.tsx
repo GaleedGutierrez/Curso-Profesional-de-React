@@ -1,11 +1,12 @@
 import Events from '@components/Events';
 import Navbar from '@components/Navbar';
-import { useRef, useState } from 'react';
+import { Events as EventsType } from '@models/index';
+import { useFetchZustand } from '@state/index';
+import { normalizeText } from '@utils/index';
+import { useEffect, useRef, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 
-import { useFetch } from '@/hooks';
-import { Events as EventsType } from '@/models';
-import { normalizeText } from '@/utils';
+import { Dialog } from '@/components';
 
 import styles from './styles.module.css';
 
@@ -15,10 +16,13 @@ const COUNTRY_CODE = 'MX';
 const URL = `${BASE_URL}?apikey=${API_KEY}&countryCode=${COUNTRY_CODE}`;
 
 const Home = (): JSX.Element => {
-	const { data, isLoading, error, fetchData } = useFetch<EventsType>(URL);
+	const { data, fetchData } = useFetchZustand();
 	const [searchTerm, setSearchTerm] = useState('');
 	const CONTAINER_REF = useRef(null);
-
+	const DATA = data as EventsType | undefined;
+	// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+	const PAGE = DATA?.page?.totalPages ?? 0;
+	const REF_MODAL = useRef<HTMLDialogElement>(null);
 	const handleNavbarSearch = (searchedTerm: string): void => {
 		setSearchTerm(normalizeText(searchedTerm));
 
@@ -31,18 +35,30 @@ const Home = (): JSX.Element => {
 		fetchData(`${URL}&keyword=${searchTerm}&page=${selected}`);
 	};
 
+	useEffect(() => {
+		// eslint-disable-next-line @typescript-eslint/no-floating-promises
+		fetchData(URL);
+	}, [fetchData]);
+
 	return (
 		<>
+			<Dialog ref={REF_MODAL}>
+				<h1>Holaaaaaaa</h1>
+			</Dialog>
+			<button
+				onClick={() => {
+					REF_MODAL.current?.showModal();
+				}}
+			>
+				Abrir
+			</button>
 			<Navbar
 				ref={CONTAINER_REF}
 				isEnabled
 				onSearch={handleNavbarSearch}
 			/>
 			<Events
-				data={data}
-				error={error}
-				isLoading={isLoading}
-				searchTerm={searchTerm}
+			// searchTerm={searchTerm}
 			/>
 			<ReactPaginate
 				activeClassName={styles['pagination-container__page--active']}
@@ -52,7 +68,7 @@ const Home = (): JSX.Element => {
 				nextLabel=">"
 				nextLinkClassName={styles['pagination-container__next']}
 				pageClassName={styles['pagination-container__page']}
-				pageCount={data?.page.totalPages ?? 0}
+				pageCount={PAGE}
 				pageRangeDisplayed={5}
 				previousClassName={styles['pagination-container__previous']}
 				previousLabel="<"

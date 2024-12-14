@@ -1,5 +1,12 @@
-async function fetchData<T>(url: string): Promise<T | undefined> {
-	const CONTROLLER = new AbortController();
+interface FetchProperties extends RequestInit {
+	controller?: AbortController;
+}
+
+async function fetchData<T>(
+	url: string,
+	options: FetchProperties = {},
+): Promise<T | undefined> {
+	const CONTROLLER = options.controller ?? new AbortController();
 
 	try {
 		const RESPONSE = await fetch(url, {

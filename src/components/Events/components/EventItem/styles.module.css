@@ -1,10 +1,7 @@
 /* stylelint-disable color-no-hex */
-img {
-	inline-size: 200px;
-}
-
 .event-item-container {
-	display: flex;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	gap: var(--space-4);
 	align-items: start;
 	margin-block-end: var(--space-6);
@@ -26,9 +23,8 @@ img {
 		display: -webkit-box;
 		overflow: hidden;
 		text-overflow: ellipsis;
-		line-clamp: 5;
-		/* stylelint-disable-next-line order/properties-order */
 		-webkit-line-clamp: 5;
+		line-clamp: 5;
 		-webkit-box-orient: vertical;
 	}
 }
@@ -57,5 +53,26 @@ img {
 		& {
 			background-color: #f9f9f9;
 		}
+	}
+}
+
+.event-item__image-container {
+	position: relative;
+
+	img {
+		inline-size: 100%;
+	}
+}
+
+.event-item__favorite-button {
+	position: absolute;
+	inset-block-start: 0.5rem;
+	inset-inline-start: 0.5rem;
+	padding: var(--space-1);
+	background-color: transparent;
+	cursor: pointer;
+
+	svg {
+		inline-size: 3rem;
 	}
 }

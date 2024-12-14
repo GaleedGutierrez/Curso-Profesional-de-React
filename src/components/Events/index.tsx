@@ -1,20 +1,20 @@
 import { Events as EventsType } from '@models/index';
-import { FC } from 'react';
+import { useFetchZustand } from '@state/index';
 
 import EventItem from './components/EventItem';
 
-interface Properties {
-	searchTerm: string;
-	data: EventsType | undefined;
-	isLoading: boolean;
-	error: Error | undefined;
-}
+// interface Properties {
+// 	// searchTerm: string;
+// 	data: EventsType | undefined;
+// 	isLoading: boolean;
+// 	error: Error | undefined;
+// }
 
-const Events: FC<Properties> = ({ searchTerm, data, isLoading, error }) => {
-	console.info(searchTerm);
-
+const Events = (): JSX.Element => {
+	const { data, isLoading, error } = useFetchZustand();
+	const DATA = data as EventsType | undefined;
 	// eslint-disable-next-line no-underscore-dangle
-	const EVENTS = data?._embedded?.events ?? [];
+	const EVENTS = DATA?._embedded?.events ?? [];
 
 	function renderEvents(): JSX.Element[] {
 		// let filteredEvents = EVENTS;
@@ -55,7 +55,7 @@ const Events: FC<Properties> = ({ searchTerm, data, isLoading, error }) => {
 		return <p>Try again with another search term.</p>;
 	}
 
-	return <div>{renderEvents()}</div>;
+	return <main>{renderEvents()}</main>;
 };
 
 export default Events;

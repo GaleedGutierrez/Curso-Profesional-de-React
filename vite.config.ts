@@ -27,14 +27,19 @@ export default defineConfig(() => ({
 			),
 			'@context': fileURLToPath(new URL('src/context/', import.meta.url)),
 			'@data': fileURLToPath(new URL('src/data/', import.meta.url)),
+			'@guard': fileURLToPath(new URL('src/guard/', import.meta.url)),
 			'@hooks': fileURLToPath(new URL('src/hooks/', import.meta.url)),
+			'@icons': fileURLToPath(
+				new URL('src/components/Icons/', import.meta.url),
+			),
 			'@models': fileURLToPath(new URL('src/models/', import.meta.url)),
 			'@pages': fileURLToPath(new URL('src/pages/', import.meta.url)),
+			'@private': fileURLToPath(new URL('src/private/', import.meta.url)),
 			'@routes': fileURLToPath(new URL('src/routes/', import.meta.url)),
-			'@state': fileURLToPath(new URL('src/state/', import.meta.url)),
 			'@services': fileURLToPath(
 				new URL('src/services/', import.meta.url),
 			),
+			'@state': fileURLToPath(new URL('src/state/', import.meta.url)),
 			'@templates': fileURLToPath(
 				new URL('src/templates/', import.meta.url),
 			),
