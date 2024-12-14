@@ -6,7 +6,7 @@ import { EventItem } from '@/components';
 import { LIKED_EVENTS_STORAGE_KEY } from '@/utils';
 
 const URL_BASE = 'https://app.ticketmaster.com/discovery/v2/events';
-const API_KEY = import.meta.env.VITE_API_KEY_TICKERMASTER as string;
+const API_KEY = import.meta.env.VITE_API_KEY_TICKERMASTER;
 const LikedEvents = (): JSX.Element => {
 	const [urlList, setUrlList] = useState<string[]>([]);
 	const { data, error, isLoading, fetchData } = useFetchList<Event>(urlList);
