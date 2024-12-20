@@ -1,14 +1,8 @@
 import { Events as EventsType } from '@models/index';
 import { useFetchZustand } from '@state/index';
+import { memo } from 'react';
 
 import EventItem from './components/EventItem';
-
-// interface Properties {
-// 	// searchTerm: string;
-// 	data: EventsType | undefined;
-// 	isLoading: boolean;
-// 	error: Error | undefined;
-// }
 
 const Events = (): JSX.Element => {
 	const { data, isLoading, error } = useFetchZustand();
@@ -17,24 +11,9 @@ const Events = (): JSX.Element => {
 	const EVENTS = DATA?._embedded?.events ?? [];
 
 	function renderEvents(): JSX.Element[] {
-		// let filteredEvents = EVENTS;
-
-		// if (searchTerm) {
-		// 	const SEARCH_TERM = searchTerm.toLowerCase();
-
-		// 	filteredEvents = EVENTS.filter((eventItem) =>
-		// 		eventItem.name.toLowerCase().includes(SEARCH_TERM),
-		// 	);
-		// }
-
 		return EVENTS.map((eventItem) => (
-			// function onEventItemClick(): void {
-			// 	navigate(`/detail/${eventItem.id}`);
-			// }
-
 			<EventItem
 				key={`event-item-${eventItem.id}`}
-				// handleEventClick={onEventItemClick}
 				id={eventItem.id}
 				images={eventItem.images}
 				info={eventItem.info}
@@ -58,4 +37,4 @@ const Events = (): JSX.Element => {
 	return <main>{renderEvents()}</main>;
 };
 
-export default Events;
+export default memo(Events);

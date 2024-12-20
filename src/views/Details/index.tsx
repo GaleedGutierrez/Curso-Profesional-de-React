@@ -1,21 +1,21 @@
 import { format } from '@formkit/tempo';
-import { useParams } from 'react-router-dom';
+import { Suspense } from 'react';
 
-import { useFetch } from '@/hooks';
+import ErrorBoundary from '@/ErrorBoundary';
 import { Event } from '@/models';
+import fetchDataWrapPromise from '@/utils/fetchDataWrapPromise';
 
-const Details = (): JSX.Element => {
-	const { eventId } = useParams();
-	const API_KEY = import.meta.env.VITE_API_KEY_TICKERMASTER;
-	const URL = `https://app.ticketmaster.com/discovery/v2/events/${eventId}.json?apikey=${API_KEY}`;
-	const { data, error, isLoading } = useFetch<Event>(URL);
+const PATHNAME = globalThis.location.pathname;
+const EVENT_ID = PATHNAME.slice(8);
+const API_KEY = import.meta.env.VITE_API_KEY_TICKERMASTER;
+const URL = `https://app.ticketmaster.com/discovery/v2/events/${EVENT_ID}.json?apikey=${API_KEY}`;
+const RESOURCE = fetchDataWrapPromise<Event>(URL);
 
-	if (error) {
-		return <main>There has been an error.</main>;
-	}
+const DetailsComponent = (): JSX.Element => {
+	const data = RESOURCE.read();
 
-	if (isLoading || !data) {
-		return <main>Loading event...</main>;
+	if (!data) {
+		return <h1>Loading event...</h1>;
 	}
 
 	return (
@@ -50,5 +50,13 @@ const Details = (): JSX.Element => {
 		</main>
 	);
 };
+
+const Details = (): JSX.Element => (
+	<Suspense fallback={<h1>Loading event...</h1>}>
+		<ErrorBoundary fallback={<h1>No se pudo cargar el evento</h1>}>
+			<DetailsComponent />
+		</ErrorBoundary>
+	</Suspense>
+);
 
 export default Details;

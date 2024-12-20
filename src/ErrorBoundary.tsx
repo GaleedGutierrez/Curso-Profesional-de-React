@@ -6,6 +6,7 @@ interface ErrorBoundaryState {
 
 interface ErrorBoundaryProperties {
 	children: ReactNode;
+	fallback?: ReactNode;
 }
 
 class ErrorBoundary extends Component<
@@ -31,10 +32,10 @@ class ErrorBoundary extends Component<
 
 	render(): ReactNode {
 		const { hasError } = this.state;
-		const { children } = this.props;
+		const { children, fallback } = this.props;
 
 		if (hasError) {
-			return <h1>Ops! I did it again ;)</h1>;
+			return fallback ?? <h1>Ops! I did it again ;)</h1>;
 		}
 
 		return children;

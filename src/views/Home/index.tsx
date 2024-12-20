@@ -3,10 +3,8 @@ import Navbar from '@components/Navbar';
 import { Events as EventsType } from '@models/index';
 import { useFetchZustand } from '@state/index';
 import { normalizeText } from '@utils/index';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import ReactPaginate from 'react-paginate';
-
-import { Dialog } from '@/components';
 
 import styles from './styles.module.css';
 
@@ -18,11 +16,11 @@ const URL = `${BASE_URL}?apikey=${API_KEY}&countryCode=${COUNTRY_CODE}`;
 const Home = (): JSX.Element => {
 	const { data, fetchData } = useFetchZustand();
 	const [searchTerm, setSearchTerm] = useState('');
+	const [isToggle, setIsToggle] = useState(false);
 	const CONTAINER_REF = useRef(null);
-	const DATA = data as EventsType | undefined;
+	const DATA = useMemo(() => data as EventsType | undefined, [data]);
 	// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-	const PAGE = DATA?.page?.totalPages ?? 0;
-	const REF_MODAL = useRef<HTMLDialogElement>(null);
+	const PAGE = useMemo(() => DATA?.page?.totalPages ?? 0, [DATA]);
 	const handleNavbarSearch = (searchedTerm: string): void => {
 		setSearchTerm(normalizeText(searchedTerm));
 
@@ -30,10 +28,13 @@ const Home = (): JSX.Element => {
 		fetchData(`${URL}&keyword=${searchedTerm}`);
 	};
 
-	const handlePageClick = ({ selected }: { selected: number }): void => {
-		// eslint-disable-next-line @typescript-eslint/no-floating-promises
-		fetchData(`${URL}&keyword=${searchTerm}&page=${selected}`);
-	};
+	const handlePageClick = useCallback(
+		({ selected }: { selected: number }): void => {
+			// eslint-disable-next-line @typescript-eslint/no-floating-promises
+			fetchData(`${URL}&keyword=${searchTerm}&page=${selected}`);
+		},
+		[fetchData, searchTerm],
+	);
 
 	useEffect(() => {
 		// eslint-disable-next-line @typescript-eslint/no-floating-promises
@@ -42,15 +43,8 @@ const Home = (): JSX.Element => {
 
 	return (
 		<>
-			<Dialog ref={REF_MODAL}>
-				<h1>Holaaaaaaa</h1>
-			</Dialog>
-			<button
-				onClick={() => {
-					REF_MODAL.current?.showModal();
-				}}
-			>
-				Abrir
+			<button onClick={() => setIsToggle((previous) => !previous)}>
+				{isToggle ? 'ON' : 'OFF'}
 			</button>
 			<Navbar
 				ref={CONTAINER_REF}

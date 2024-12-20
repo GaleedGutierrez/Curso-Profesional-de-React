@@ -1,9 +1,8 @@
+import { EventItem } from '@components/index';
 import { useFetchList } from '@hooks/index';
 import { Event } from '@models/index';
+import { LIKED_EVENTS_STORAGE_KEY } from '@utils/index';
 import { useEffect, useState } from 'react';
-
-import { EventItem } from '@/components';
-import { LIKED_EVENTS_STORAGE_KEY } from '@/utils';
 
 const URL_BASE = 'https://app.ticketmaster.com/discovery/v2/events';
 const API_KEY = import.meta.env.VITE_API_KEY_TICKERMASTER;
