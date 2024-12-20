@@ -918,19 +918,6 @@ export default tsEslintConfig(
 				},
 			],
 
-			'@stylistic/jsx-wrap-multilines': [
-				'error',
-				{
-					declaration: 'parens-new-line',
-					assignment: 'parens-new-line',
-					return: 'parens-new-line',
-					arrow: 'parens-new-line',
-					condition: 'parens-new-line',
-					logical: 'parens-new-line',
-					prop: 'parens-new-line',
-				},
-			],
-
 			'react/no-access-state-in-setstate': 'error',
 			'react/no-array-index-key': 'error',
 			'react/no-arrow-function-lifecycle': 'error',

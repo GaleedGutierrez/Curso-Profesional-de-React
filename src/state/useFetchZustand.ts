@@ -17,15 +17,16 @@ const useFetchZustand = create<Store<unknown>>((set) => ({
 	error: undefined,
 	fetchData: async (
 		url: string,
-		{ controller }: FetchProperties = {},
+		options: FetchProperties = {},
 	): Promise<void> => {
 		set({ error: undefined, isLoading: true });
 
-		const CONTROLLER = controller ?? new AbortController();
+		const CONTROLLER = options.controller ?? new AbortController();
 
 		try {
 			const RESPONSE = await fetch(url, {
 				signal: CONTROLLER.signal,
+				...options,
 			});
 
 			if (!RESPONSE.ok) {

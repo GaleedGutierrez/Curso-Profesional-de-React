@@ -11,6 +11,7 @@ async function fetchData<T>(
 	try {
 		const RESPONSE = await fetch(url, {
 			signal: CONTROLLER.signal,
+			...options,
 		});
 
 		if (!RESPONSE.ok) {
